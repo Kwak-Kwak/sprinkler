@@ -1,9 +1,11 @@
 package com.sprinkler.kwakkwak.domain;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@NoArgsConstructor
 @Entity
 public class Post extends BaseTimeEntity {
 
@@ -12,12 +14,21 @@ public class Post extends BaseTimeEntity {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
-    private User user;
+    @JoinColumn(name="userInfo_code")
+    private UserInfo userInfo;
 
     private Long boardId;
 
     private String title;
 
     private String context;
+
+    @Builder
+    public Post(UserInfo userInfo,Long boardId, String title, String context) {
+        this.userInfo = userInfo;
+        this.boardId = boardId;
+        this.title = title;
+        this.context = context;
+    }
+
 }

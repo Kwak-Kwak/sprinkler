@@ -14,6 +14,6 @@ public class Scrap {
     private Post post;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
-    private User user;
+    @JoinColumn(name="userInfo_code")
+    private UserInfo userInfo;
 }
