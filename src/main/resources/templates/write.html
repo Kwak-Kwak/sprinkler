@@ -76,9 +76,9 @@ const { codeSyntaxHighlight } = Editor.plugin;
 editor.getMarkdown();
 
 // 태그 추가
- $('#tag').keydown(function(){
-    if(event.keyCode === 13 || event.keyCode === 32){
-      var tag = $('#tag').val();
+ $('#tag').keyup(function(){
+    if(event.keyCode === 13 || event.keyCode === 188){
+      var tag = $('#tag').val().split(',')[0];
       if(tag){
         var hidden = document.getElementsByName("tag");
         var chk=true;
@@ -106,7 +106,8 @@ editor.getMarkdown();
       }
     }
   });
-  // recruitment 태그 삭제 기능
+
+  //태그 삭제 기능
   function del_tag(obj){
     var input = document.getElementsByName("tag");
     input.forEach(function(element){
