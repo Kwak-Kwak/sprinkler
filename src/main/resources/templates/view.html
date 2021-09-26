@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko" style="height: 100%;">
+
+<head>
+    <title>새글 작성</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="/static/img/apple-icon.png">
+    <link rel="shortcut icon" type="/image/x-icon" href="/static/img/favicon.ico">
+
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/templatemo.css">
+    <link rel="stylesheet" href="/static/css/custom.css">
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="/static/css/fontawesome.min.css">
+
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://uicdn.toast.com/editor-plugin-code-syntax-highlight/latest/toastui-editor-plugin-code-syntax-highlight.min.css"
+    />
+    <!--
+
+
+    TemplateMo 559 Zay Shop
+
+    https://templatemo.com/tm-559-zay-shop
+
+    -->
+</head>
+
+<body>
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-light shadow">
+    <div class="container d-flex justify-content-between align-items-center">
+
+        <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+            Zay
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+            <div class="flex-fill">
+                <ul class="nav navbar-nav d-flex justify-content-end ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">곽곽랭킹</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">커뮤니티</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop.html">로그인</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">회원가입</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</nav>
+<script type="text/javascript" src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+<script src="https://uicdn.toast.com/editor-plugin-code-syntax-highlight/latest/toastui-editor-plugin-code-syntax-highlight-all.min.js"></script>
+<section class="container py-5" >
+    <div class="d-flex flex-column px-5 mx-5 my-5">
+        <h2>제목</h2>
+        <div class="d-flex mt-3">
+            <div class="py-2 me-auto">
+                <span>이름(닉네임)</span><span> · </span><span>2021-09-26</span>
+            </div>
+            <div class="py-2">
+                <img id="unlike" src="/static/img/unheart.png" style="width: 20px;" alt="unlike" onclick="Like();">
+                <img id="like" src="/static/img/heart.png" style="width: 20px; display: none;" alt="like" onclick="unLike();">
+                <img id="unscrap" src="/static/img/unstar.png" class="ms-2" style="width: 20px;" alt="unscrap" onclick="Scrap();">
+                <img id="scrap" src="/static/img/star.png" class="ms-2" style="width: 20px;display: none;" alt="scrap" onclick="unScrap();">
+            </div>
+        </div>
+        <div class="d-flex mt-1 mb-3">
+            <button type="button" class="btn btn-secondary me-2">node.js</button>
+            <button type="button" class="btn btn-secondary me-2">react</button>
+        </div>
+        <div id="viewer"></div>
+        <div class="d-flex my-5 py-3 align-items-center">
+            <img src="/static/img/profile.png" style="width:150px; height:150px;" alt="profile" class="rounded-circle">
+            <div class="d-flex flex-column">
+                <span class="h3 px-3">떵웅이</span>
+                <span class="h6 px-3">개발자에서 벗어나고싶어</span>
+            </div>
+        </div>
+        <hr>
+        <div class="d-flex flex-column comment-group my-5">
+            <h6>6개의 댓글</h6>
+            <input type="text" class="form-control my-3 py-3 h3" placeholder="댓글을 작성해주세요" aria-label="Username" aria-describedby="basic-addon1">
+            <button class="btn btn-success ms-auto">댓글 작성</button>
+            <div class="d-flex flex-column">
+                <div class="d-flex">
+                    <img src="/static/img/profile_2.jpg" style="width:100px; height:100px;" alt="profile" class="rounded-circle">
+                    <div class="d-flex flex-column justify-content-center">
+                        <span class="h6 px-3">일기호</span>
+                        <span class="h6 px-3 text-light ms-auto">2021-09-26</span>
+                    </div>
+                </div>
+                <p class="my-2 px-4">
+                    진짜 너무 감사합니다. 덕분에 보잘것 없던 깃헙이.. 아름다워졌어요.
+                    solved.ac 라는 것도 이 포스트 통해서 알게 됐네요. 아직 브론즈..ㅠㅠ 레벨 올리는 재미도 있을 것 같아요.
+                </p>
+                <hr>
+            </div>
+            <div class="d-flex flex-column">
+                <div class="d-flex">
+                    <img src="/static/img/profile_3.png" style="width:100px; height:100px;" alt="profile" class="rounded-circle">
+                    <div class="d-flex flex-column justify-content-center">
+                        <span class="h6 px-3">컴공먹꼬자</span>
+                        <span class="h6 px-3 text-light ms-auto">2021-09-26</span>
+                    </div>
+                </div>
+                <p class="my-2 px-4">
+                    깃헙을 어떻게 관리해야 할지 고민이었는데 좋은 글 감사합니다 :)
+                </p>
+                <hr>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Start Script -->
+<script src="/static/js/jquery-1.11.0.min.js"></script>
+<script src="/static/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/templatemo.js"></script>
+<script src="/static/js/custom.js"></script>
+<script>
+const { Editor } = toastui;
+
+const viewer = new Editor.factory({
+        el: document.querySelector('#viewer'),
+        viewer: true,
+        height: '75vh',
+        initialValue: "### Search Service 구현 \n > cursor 보다 skip이 pagenation 기능에 적합할 것 같아 skip을 이용하여 구현을 했습니다."
+});
+
+const Like = () => {
+    let unlike = document.getElementById("unlike");
+    let like =document.getElementById("like");
+    unlike.style.display='none';
+    like.style.display='inline';
+}
+const unLike = () => {
+    let unlike = document.getElementById("unlike");
+    let like =document.getElementById("like");
+    unlike.style.display='inline';
+    like.style.display='none';
+}
+
+const Scrap = () => {
+    let unscrap = document.getElementById("unscrap");
+    let scrap =document.getElementById("scrap");
+    unscrap.style.display='none';
+    scrap.style.display='inline';
+}
+
+const unScrap = () => {
+    let unscrap = document.getElementById("unscrap");
+    let scrap =document.getElementById("scrap");
+    unscrap.style.display='inline';
+    scrap.style.display='none';
+}
+</script>
+<!-- End Script -->
+</body>
+
+</html>
