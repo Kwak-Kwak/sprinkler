@@ -7,3 +7,7 @@ Custom Css
 #star {
   background: url( "../img/unstar.png" ) no-repeat;
 }
+
+.info {
+    border-bottom : 2px solid black;
+}
