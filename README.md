@@ -1,4 +1,4 @@
-## 🦆 팀 정보(Team Information)
+## 🦆 팀원 소개(Team Information)
 
 <table>
    <tr>
