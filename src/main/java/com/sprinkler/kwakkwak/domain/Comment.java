@@ -1,7 +1,11 @@
 package com.sprinkler.kwakkwak.domain;
 
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
+@NoArgsConstructor
 @Entity
 public class Comment extends BaseTimeEntity{
     @Id
@@ -19,4 +23,12 @@ public class Comment extends BaseTimeEntity{
     private Post post;
 
     private String context;
+
+    @Builder
+    public Comment(Long boardId, UserInfo userinfo, Post post, String context) {
+        this.boardId = boardId;
+        this.userInfo = userinfo;
+        this.post = post;
+        this.context = context;
+    }
 }

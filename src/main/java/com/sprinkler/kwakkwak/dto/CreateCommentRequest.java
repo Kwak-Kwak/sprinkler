@@ -10,18 +10,9 @@ import javax.persistence.ManyToOne;
 
 @Getter
 @Setter
-public class CreatePostRequest {
+public class CreateCommentRequest {
 
     private Long userInfoCode;
 
-    private String title;
-
     private String context;
-
-
-    public CreatePostRequest(Long userInfoCode, String title, String context) {
-        this.userInfoCode = userInfoCode;
-        this.title = title;
-        this.context = context;
-    }
 }
