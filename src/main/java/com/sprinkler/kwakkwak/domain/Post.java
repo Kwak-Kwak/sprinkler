@@ -1,10 +1,12 @@
 package com.sprinkler.kwakkwak.domain;
 
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Getter
 @NoArgsConstructor
 @Entity
 public class Post extends BaseTimeEntity {

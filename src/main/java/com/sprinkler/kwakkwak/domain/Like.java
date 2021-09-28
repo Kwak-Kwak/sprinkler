@@ -1,5 +1,7 @@
 package com.sprinkler.kwakkwak.domain;
 
+import lombok.Builder;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,4 +18,11 @@ public class Like {
     @ManyToOne
     @JoinColumn(name="userInfo_code")
     private UserInfo userInfo;
+
+    @Builder
+    public Like(Post post, UserInfo userInfo) {
+        this.post = post;
+        this.userInfo = userInfo;
+    }
+
 }
