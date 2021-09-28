@@ -1,0 +1,13 @@
+/*
+Custom Css
+*/
+#heart {
+   background: url( "../img/unheart.png" ) no-repeat;
+}
+#star {
+  background: url( "../img/unstar.png" ) no-repeat;
+}
+
+.info {
+    border-bottom : 2px solid black;
+}
