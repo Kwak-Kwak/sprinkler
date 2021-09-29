@@ -1,5 +1,5 @@
 ### resources ###
-/src/main/resources/application.yml
+/src/main/resources/application.properties
 
 HELP.md
 .gradle
