@@ -11,3 +11,40 @@ Custom Css
 .info {
     border-bottom : 2px solid black;
 }
+
+#first {
+    background-color : #FAFAD2;
+}
+
+#second {
+    background-color : #FFEFD5;
+}
+#third {
+    background-color : #FDF5E6;
+}
+
+#fourth{
+    background-color : #dcdcdc;
+}
+
+#fifth {
+    background-color: #bebebe;
+}
+
+#crown {
+   background-url : '../static/img/crown';
+
+}
+.rank_profile {
+    width : 100px;
+    height : 100px;
+    position: static;
+}
+
+
+.detail_profile {
+    width : 80px;
+    height : 80px;
+}
+
+@media
