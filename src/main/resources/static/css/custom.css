@@ -30,12 +30,21 @@ Custom Css
 #fifth {
     background-color: #bebebe;
 }
+
+#crown {
+   background-url : '../static/img/crown';
+
+}
 .rank_profile {
     width : 100px;
     height : 100px;
+    position: static;
 }
+
 
 .detail_profile {
     width : 80px;
     height : 80px;
 }
+
+@media
