@@ -1,21 +1,50 @@
+
 <!DOCTYPE html>
-<html lang="en"
+<html lang=ko"
       xmlns:th="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta charset="UTF-8">
-     <title>sign up</title>
-    </head>
-    <body>
-        <h1>Sign Up</h1> <hr>
+<head>
+    <title>곽곽회원가입</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <form th:action="@{/user}" method="POST">
-     email : <input type="text" name="email"> <br>
-        password : <input type="password" name="password"> <br>
-     <input type="radio" name="auth" value="ROLE_ADMIN,ROLE_USER"> admin
-     <input type="radio" name="auth" value="ROLE_USER" checked="checked"> user <br>
-     <button type="submit">Join</button>
-     </form> <br>
+    <link rel="apple-touch-icon" href="../static/img/apple-icon.png">
+    <link rel="shortcut icon" type="/image/x-icon" href="../static/img/favicon.ico">
 
-        <a href="/login">Login</a>
-    </body>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/templatemo.css">
+    <link rel="stylesheet" href="../static/css/custom.css">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="../static/css/fontawesome.min.css">
+    <!--
+
+    TemplateMo 559 Zay Shop
+
+    https://templatemo.com/tm-559-zay-shop
+
+    -->
+</head>
+<body class="bg-light" >
+<section class="container py-5">
+    <div class="d-flex form align-items-center my-5 bg-white shadow">
+        <div class="d-flex flex-column col  justify-content-center align-items-center">
+            <a class="text-decoration-none h1" href="#">곽곽</a>
+            <p>개발자 커뮤니티 </p>
+            <p>이미지 추가예정</p>
+        </div>
+        <div class="d-flex flex-column col my-auto px-2 justify-content-center align-items-center">
+            <form th:action="@{/user}" method="POST">
+                email : <input type="text" name="email"> <br>
+                password : <input type="password" name="password"> <br>
+                <button type="submit">가입하기</button>
+            </form> <br>
+
+            <div th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null">
+                <span th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"></span>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
 </html>
