@@ -1,6 +1,13 @@
 /*
 Custom Css
 */
+
+@font-face {
+font-family: 'BMHANNAPro';
+src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.0/BMHANNAPro.woff') format('woff');
+font-weight: normal;
+font-style: normal;
+}
 #heart {
    background: url( "../img/unheart.png" ) no-repeat;
 }
@@ -57,10 +64,7 @@ Custom Css
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .7rem;
 }
-=======
 .link_image{
     width: 50px;
     height : 50px;
 }
-
-
