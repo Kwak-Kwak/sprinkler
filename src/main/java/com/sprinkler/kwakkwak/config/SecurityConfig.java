@@ -20,26 +20,35 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception { // http 관련 인증 설정
+//
+//        http
+//                .authorizeRequests()
+//                .antMatchers("/**").permitAll().anyRequest().permitAll();
+//
+//        http
+//                .csrf().disable();
+//
+//        http
+//                .csrf().disable();
 
         http
                 .authorizeRequests() // 접근 인증 설정
-                 .antMatchers("/login", "/signup", "/user").permitAll() // 누구나 접근 허용
-                 .antMatchers("/").hasRole("USER") // USER, ADMIN만 접근 가능
-                 .antMatchers("/admin").hasRole("ADMIN") // ADMIN만 접근 가능
-                 .anyRequest().authenticated() // 나머지 요청은 권한이 있어야 접근 가능
+                .antMatchers("/**", "/signup", "/user").permitAll() // 누구나 접근 허용
+                .antMatchers("/admin").hasRole("ADMIN") // ADMIN만 접근 가능
+                .anyRequest().authenticated() // 나머지 요청은 권한이 있어야 접근 가능
                 .and()
-                 .formLogin() // 로그인 설정
-                 .loginPage("/login") // 로그인 페이지
-                 .defaultSuccessUrl("/") // 로그인 성공 후 주소
+                .formLogin() // 로그인 설정
+                .loginPage("/login") // 로그인 페이지
+                .defaultSuccessUrl("/") // 로그인 성공 후 주소
                 .and()
-                 .logout() // 로그아웃 설정
-                 .logoutSuccessUrl("/login") // 로그아웃 성공 후 주소
-                 .invalidateHttpSession(true); // 세션 초기화
+                .logout() // 로그아웃 설정
+                .logoutSuccessUrl("/login") // 로그아웃 성공 후 주소
+                .invalidateHttpSession(true); // 세션 초기화
     }
-    
+
     @Override
     public void configure(WebSecurity web) { // static 하위 파일 목록(css, js, img) 인증 무시
-        web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/h2-console/**");
+        web.ignoring().antMatchers("/static/**","/css/**", "/js/**", "/img/**", "/h2-console/**");
     }
 
     @Override
@@ -47,4 +56,3 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
     }
 }
-

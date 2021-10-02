@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Zay Shop eCommerce HTML CSS Template</title>
     <meta charset="utf-8">
@@ -9,13 +8,14 @@
     <link rel="apple-touch-icon" href="../static/img/apple-icon.png">
     <link rel="shortcut icon" type="/image/x-icon" href="../static/img/favicon.ico">
 
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/css/templatemo.css">
-    <link rel="stylesheet" href="../static/css/custom.css">
+    <link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link href="../static/css/templatemo.css" th:href="@{/css/templatemo.css}" rel="stylesheet">
+    <link href="../static/css/custom.css" th:href="@{/css/custom.css}" rel="stylesheet">
 
     <!-- Load fonts style after rendering the layout styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BMHANNAPro:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="../static/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link href="../static/css/fontawesome.min.css" rel="stylesheet">
+
     <!--
 
     TemplateMo 559 Zay Shop
@@ -46,10 +46,10 @@
                         <a class="nav-link" href="index.html">곽곽랭킹</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="comunity.html">커뮤니티</a>
+                        <a class="nav-link" href="community.html" th:href="@{/community}">커뮤니티</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="comunity.html">곽곽 RSS</a>
+                        <a class="nav-link" href="community.html">곽곽 RSS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="shop.html">로그인</a>
@@ -252,11 +252,12 @@
 <!-- End Footer -->
 
 <!-- Start Script -->
-<script src="../static/js/jquery-1.11.0.min.js"></script>
-<script src="../static/js/jquery-migrate-1.2.1.min.js"></script>
-<script src="../static/js/bootstrap.bundle.min.js"></script>
-<script src="../static/js/templatemo.js"></script>
-<script src="../static/js/custom.js"></script>
+
+<script src="../static/js/jquery-1.11.0.min.js" th:src="@{/js/jquery-1.11.0.min.js}"></script>
+<script src="../static/js/jquery-migrate-1.2.1.min.js" th:src="@{/js/jquery-migrate-1.2.1.min.js}"></script>
+<script src="../static/js/bootstrap.bundle.min.js" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script src="../static/js/templatemo.js" th:src="@{/js/templatemo.js}"></script>
+<script src="../static/js/custom.js" th:src="@{/js/custom.js}"></script>
 <!-- End Script -->
 </body>
 
