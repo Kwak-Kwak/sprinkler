@@ -1,11 +1,13 @@
 package com.sprinkler.kwakkwak.domain;
 
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@NoArgsConstructor
 @Entity
-public class Like {
+public class Heart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,11 +18,11 @@ public class Like {
     private Post post;
 
     @ManyToOne
-    @JoinColumn(name="userInfo_code")
+    @JoinColumn(name="user_info_code")
     private UserInfo userInfo;
 
     @Builder
-    public Like(Post post, UserInfo userInfo) {
+    public Heart(Post post, UserInfo userInfo) {
         this.post = post;
         this.userInfo = userInfo;
     }

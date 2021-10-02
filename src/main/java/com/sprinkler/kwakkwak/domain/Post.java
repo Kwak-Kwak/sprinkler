@@ -16,7 +16,7 @@ public class Post extends BaseTimeEntity {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name="userInfo_code")
+    @JoinColumn(name="user_info_code")
     private UserInfo userInfo;
 
     private Long boardId;

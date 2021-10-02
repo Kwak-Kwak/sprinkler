@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 @Setter
 public class CreatePostRequest {
 
+    private Long boardId;
+
     private Long userInfoCode;
 
     private String title;
@@ -19,7 +21,8 @@ public class CreatePostRequest {
     private String context;
 
 
-    public CreatePostRequest(Long userInfoCode, String title, String context) {
+    public CreatePostRequest(Long boardId, Long userInfoCode, String title, String context) {
+        this.boardId = boardId;
         this.userInfoCode = userInfoCode;
         this.title = title;
         this.context = context;

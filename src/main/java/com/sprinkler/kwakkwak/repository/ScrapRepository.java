@@ -1,6 +1,5 @@
 package com.sprinkler.kwakkwak.repository;
 
-import com.sprinkler.kwakkwak.domain.Like;
 import com.sprinkler.kwakkwak.domain.Scrap;
 import org.springframework.data.jpa.repository.JpaRepository;
 

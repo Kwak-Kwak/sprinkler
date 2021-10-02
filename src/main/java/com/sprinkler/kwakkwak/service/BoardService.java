@@ -5,7 +5,6 @@ import com.sprinkler.kwakkwak.dto.CreateCommentRequest;
 import com.sprinkler.kwakkwak.dto.CreatePostRequest;
 import com.sprinkler.kwakkwak.repository.*;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -19,9 +18,14 @@ public class BoardService {
     private final UserInfoRepository userInfoRepository;
     private final PostRepository postRepository;
     private final CommentRepository commentRepository;
-    private final LikeRepository likeRepository;
+    private final HeartRepository heartRepository;
     private final ScrapRepository scrapRepository;
 
+    @Transactional
+    public List<Post> getAllPostList() {
+        List<Post> post = postRepository.findAll();
+        return post;
+    }
 
     @Transactional
     public List<Post> getPostList(Long boardId) {
@@ -38,19 +42,17 @@ public class BoardService {
     }
 
     @Transactional
-    public void savePost(Long boardId, CreatePostRequest request) {
+    public void savePost(CreatePostRequest request) {
         Optional<UserInfo> userInfo = userInfoRepository.findById(request.getUserInfoCode());
 
         if (userInfo.isPresent()) {
             Post post = Post.builder()
-                    .boardId(boardId)
+                    .boardId(request.getBoardId())
                     .context(request.getContext())
                     .title(request.getTitle())
                     .userInfo(userInfo.get()).build();
 
             postRepository.save(post);
-        } else {
-            // TODO : 에러 처리
         }
     }
 
@@ -68,7 +70,7 @@ public class BoardService {
 
     @Transactional
     public List<Comment> getComment(Long postId) {
-        List<Comment> comment = commentRepository.findByPost(postId);
+        List<Comment> comment = commentRepository.findByPost_Id(postId);
 
         return comment;
     }
@@ -106,31 +108,31 @@ public class BoardService {
 
         Optional<Post> post = postRepository.findById(postId);
         Optional<UserInfo> userInfo = userInfoRepository.findById(userId);
-        Optional<Like> like = likeRepository.findByUserInfoAndPost(postId, userId);
+        Optional<Heart> like = heartRepository.findByUserInfoAndPost(postId, userId);
 
         if (post.isPresent() && userInfo.isPresent() && like.isEmpty()) {
-            Like newLike = Like.builder()
+            Heart newHeart = Heart.builder()
                     .post(post.get())
                     .userInfo(userInfo.get())
                     .build();
 
-            likeRepository.save(newLike);
+            heartRepository.save(newHeart);
         }
     }
 
     @Transactional
     public boolean getLike(Long postId, Long userId) {
-        Optional<Like> like = likeRepository.findByUserInfoAndPost(postId, userId);
+        Optional<Heart> like = heartRepository.findByUserInfoAndPost(postId, userId);
 
         return like.isPresent();
     }
 
     @Transactional
     public void deleteLike(Long postId, Long userId) {
-        Optional<Like> like = likeRepository.findByUserInfoAndPost(postId, userId);
+        Optional<Heart> like = heartRepository.findByUserInfoAndPost(postId, userId);
 
         if (like.isPresent()) {
-            likeRepository.delete(like.get());
+            heartRepository.delete(like.get());
         }
     }
 
