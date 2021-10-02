@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://thymeleaf.org">
 <head>
-    <title>새글 작성</title>
+    <title>회 작성</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -30,15 +30,19 @@
 <section class="container py-5">
     <div class="d-flex form align-items-center my-5 bg-white shadow">
         <div class="d-flex flex-column col  justify-content-center align-items-center">
-            <a class="text-decoration-none h1" href="#">곽곽</a>
-            <p>개발자 커뮤니티 </p>
-            <p>이미지 추가예정</p>
+            <div class="d-flex flex-column col  justify-content-center align-items-center">
+                <img class="login_profile" src="../static/img/jandy.png" alt="glass_jandy">
+                <a class="text-decoration-none h1" href="#">곽곽</a>
+                <p>소개부분</p>
+                <p>개발자 커뮤니티 - 서울과학기술대학교</p>
+            </div>
         </div>
         <div class="d-flex flex-column col my-auto px-2 justify-content-center align-items-center">
             <form th:action="@{/user}" method="POST">
-                email : <input type="text" name="email"> <br>
-                password : <input type="password" name="password"> <br>
-                <button type="submit">가입하기</button>
+                <input type="text" name="email" class="form-control my-2"  placeholder="이메일">
+                <input type="password" name="password" class="form-control my-2" placeholder="비빌번호">
+                <input type="password" name="password"  class="form-control my-2" placeholder="비빌번호 확인">
+                <button type="submit" class="btn btn-primary ms-auto my-2">가입하기</button>
             </form> <br>
 
             <div th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null">
@@ -47,5 +51,6 @@
         </div>
     </div>
 </section>
+
 </body>
 </html>
