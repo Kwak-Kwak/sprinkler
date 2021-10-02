@@ -3,15 +3,15 @@ package com.sprinkler.kwakkwak.controller;
 
 import com.sprinkler.kwakkwak.domain.Comment;
 import com.sprinkler.kwakkwak.domain.Post;
-import com.sprinkler.kwakkwak.dto.CreateCommentRequest;
+import com.sprinkler.kwakkwak.domain.UserInfo;
 import com.sprinkler.kwakkwak.dto.CreatePostRequest;
 import com.sprinkler.kwakkwak.service.BoardService;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 import java.util.Optional;
@@ -52,7 +52,7 @@ public class BoardController {
     }
 
     @GetMapping("/community/{postId}")
-    public String getFreePost(@PathVariable String postId, Model model) {
+    public String getStudyPost(@PathVariable String postId, Model model) {
         Long id = Long.parseLong(postId);
         Optional<Post> post = boardService.getPost(id);
         List<Comment> comment = boardService.getComment(id);
@@ -61,15 +61,54 @@ public class BoardController {
         return "view";
     }
 
+
     @GetMapping("/community/write")
     public String write() {
         return "write";
     }
 
     @PostMapping("/community/write")
-    public String savePost(@RequestBody CreatePostRequest request) {
-        boardService.savePost(request);
-        return "redirect:/";
+    public RedirectView savePost(@RequestBody CreatePostRequest request, @AuthenticationPrincipal UserInfo userInfo) {
+        boardService.savePost(request, userInfo);
+        return new RedirectView("/community");
+    }
+
+    @GetMapping("/community/{postId}/like")
+    public RedirectView saveLike(@PathVariable String postId, @AuthenticationPrincipal UserInfo userInfo) {
+        Long id = Long.parseLong(postId);
+        boardService.saveLike(id, userInfo);
+        return new RedirectView("/community/{postId}");
+    }
+
+    @DeleteMapping("/community/{postId}/like")
+    public RedirectView deleteLike(@PathVariable String postId, @AuthenticationPrincipal UserInfo userInfo) {
+        Long id = Long.parseLong(postId);
+        boardService.deleteLike(id, userInfo);
+        return new RedirectView("/community/{postId}");
+    }
+
+    @GetMapping("/community/{postId}/scrap")
+    public RedirectView saveScrap(@PathVariable String postId, @AuthenticationPrincipal UserInfo userInfo) {
+        Long id = Long.parseLong(postId);
+        boardService.saveScrap(id,userInfo);
+        return new RedirectView("/community/{postId}");
+    }
+
+    @DeleteMapping("/community/{postId}/scrap")
+    public RedirectView deleteScrap(@PathVariable String postId, @AuthenticationPrincipal UserInfo userInfo) {
+        Long id = Long.parseLong(postId);
+        boardService.deleteScrap(id, userInfo);
+        return new RedirectView("/community/{postId}");
+    }
+
+    @GetMapping("/test")
+    public String currentUserName(@AuthenticationPrincipal UserInfo userInfo) {
+        String email = userInfo.getEmail();
+
+
+        System.out.println(email);
+
+        return "index";
     }
 
 
