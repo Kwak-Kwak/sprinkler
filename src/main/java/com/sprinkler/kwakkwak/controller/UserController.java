@@ -24,6 +24,11 @@ public class UserController {
         return "redirect:/login";
     }
 
+    @GetMapping("/signup")
+    public String register() {
+        return "signup";
+    }
+
     @GetMapping( "/logout")
     public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());

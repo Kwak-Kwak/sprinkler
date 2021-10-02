@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/") // 로그인 성공 후 주소
                 .and()
                 .logout() // 로그아웃 설정
-                .logoutSuccessUrl("/login") // 로그아웃 성공 후 주소
+                .logoutSuccessUrl("/") // 로그아웃 성공 후 주소
                 .invalidateHttpSession(true); // 세션 초기화
     }
 
