@@ -1,7 +1,6 @@
 
 package com.sprinkler.kwakkwak.domain;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,7 +14,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 
@@ -35,14 +33,11 @@ public class UserInfo implements UserDetails {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "auth")
-    private String auth;
 
     @Builder
-    public UserInfo(String email, String password, String auth) {
+    public UserInfo(String email, String password) {
         this.email = email;
         this.password = password;
-        this.auth = auth;
     }
 
     // 사용자의 권한을 콜렉션 형태로 반환
@@ -50,10 +45,6 @@ public class UserInfo implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<GrantedAuthority> roles = new HashSet<>();
-
-        for (String role : auth.split(",")) {
-            roles.add(new SimpleGrantedAuthority(role));
-        }
 
         return roles;
     }

@@ -12,7 +12,5 @@ import javax.persistence.ManyToOne;
 @Setter
 public class CreateCommentRequest {
 
-    private Long userInfoCode;
-
     private String context;
 }

@@ -80,10 +80,10 @@
                 <span>이름(닉네임)</span><span> · </span><span>2021-09-26</span>
             </div>
             <div class="py-2">
-                <img id="unlike" src="../static/img/unheart.png" style="width: 20px;" alt="unlike" onclick="Like();">
-                <img id="like" src="../static/img/heart.png" style="width: 20px; display: none;" alt="like" onclick="unLike();">
-                <img id="unscrap" src="../static/img/unstar.png" class="ms-2" style="width: 20px;" alt="unscrap" onclick="Scrap();">
-                <img id="scrap" src="../static/img/star.png" class="ms-2" style="width: 20px;display: none;" alt="scrap" onclick="unScrap();">
+                <img id="unlike" th:src="@{/img/unheart.png}" src="../static/img/unheart.png" style="width: 20px;" alt="unlike" onclick="Like();">
+                <img id="like" th:src="@{/img/heart.png}" src="../static/img/heart.png" style="width: 20px; display: none;" alt="like" onclick="unLike();">
+                <img id="unscrap" th:src="@{/img/unstar.png}" src="../static/img/unstar.png" class="ms-2" style="width: 20px;" alt="unscrap" onclick="Scrap();">
+                <img id="scrap" th:src="@{/img/star.png}" src="../static/img/star.png" class="ms-2" style="width: 20px;display: none;" alt="scrap" onclick="unScrap();">
             </div>
         </div>
         <div class="d-flex mt-1 mb-3">

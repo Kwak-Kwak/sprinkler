@@ -27,9 +27,9 @@ public class BoardService {
         return post;
     }
 
+
     @Transactional
     public List<Post> getPostList(Long boardId) {
-        // TODO : 올바른 boardId인지
         List<Post> post = postRepository.findByBoardId(boardId);
         return post;
     }
@@ -42,18 +42,15 @@ public class BoardService {
     }
 
     @Transactional
-    public void savePost(CreatePostRequest request) {
-        Optional<UserInfo> userInfo = userInfoRepository.findById(request.getUserInfoCode());
+    public void savePost(CreatePostRequest request,UserInfo userInfo) {
 
-        if (userInfo.isPresent()) {
-            Post post = Post.builder()
-                    .boardId(request.getBoardId())
-                    .context(request.getContext())
-                    .title(request.getTitle())
-                    .userInfo(userInfo.get()).build();
+        Post post = Post.builder()
+                .boardId(request.getBoardId())
+                .context(request.getContext())
+                .title(request.getTitle())
+                .userInfo(userInfo).build();
 
-            postRepository.save(post);
-        }
+        postRepository.save(post);
     }
 
     @Transactional
@@ -77,21 +74,23 @@ public class BoardService {
 
     @Transactional
     public void saveComment(Long boardId, Long postId, CreateCommentRequest request) {
-        Optional<UserInfo> userInfo = userInfoRepository.findById(request.getUserInfoCode());
-        Optional<Post> post = postRepository.findById(postId);
-
-        if (userInfo.isPresent() && post.isPresent()) {
-            Comment comment = Comment.builder()
-                    .boardId(boardId)
-                    .context(request.getContext())
-                    .post(post.get())
-                    .userinfo(userInfo.get())
-                    .build();
-            commentRepository.save(comment);
-
-        } else {
-            // TODO : 에러 처리
-        }
+//        Optional<UserInfo> userInfo = userInfoRepository.findById(request.getUserInfoCode());
+//        Optional<Post> post = postRepository.findById(postId);
+//
+//        if (userInfo.isPresent() && post.isPresent()) {
+//            Comment comment = Comment.builder()
+//                    .boardId(boardId)
+//                    .context(request.getContext())
+//                    .post(post.get())
+//                    .userinfo(userInfo.get())
+//                    .build();
+//            commentRepository.save(comment);
+//
+//            post.get().update(1);
+//
+//        } else {
+//            // TODO : 에러 처리
+//        }
     }
 
     @Transactional
@@ -104,16 +103,14 @@ public class BoardService {
     }
 
     @Transactional
-    public void saveLike(Long postId, Long userId) {
+    public void saveLike(Long postId, UserInfo userInfo) {
 
         Optional<Post> post = postRepository.findById(postId);
-        Optional<UserInfo> userInfo = userInfoRepository.findById(userId);
-        Optional<Heart> like = heartRepository.findByUserInfoAndPost(postId, userId);
 
-        if (post.isPresent() && userInfo.isPresent() && like.isEmpty()) {
+        if (post.isPresent()) {
             Heart newHeart = Heart.builder()
                     .post(post.get())
-                    .userInfo(userInfo.get())
+                    .userInfo(userInfo)
                     .build();
 
             heartRepository.save(newHeart);
@@ -128,8 +125,8 @@ public class BoardService {
     }
 
     @Transactional
-    public void deleteLike(Long postId, Long userId) {
-        Optional<Heart> like = heartRepository.findByUserInfoAndPost(postId, userId);
+    public void deleteLike(Long postId, UserInfo userInfo) {
+        Optional<Heart> like = heartRepository.findByUserInfoAndPost(postId, userInfo.getCode());
 
         if (like.isPresent()) {
             heartRepository.delete(like.get());
@@ -137,16 +134,14 @@ public class BoardService {
     }
 
     @Transactional
-    public void saveScrap(Long postId, Long userId) {
+    public void saveScrap(Long postId, UserInfo userInfo) {
 
         Optional<Post> post = postRepository.findById(postId);
-        Optional<UserInfo> userInfo = userInfoRepository.findById(userId);
-        Optional<Scrap> scrap = scrapRepository.findByUserInfoAndPost(userId, postId);
 
-        if (post.isPresent() && userInfo.isPresent() && scrap.isEmpty()) {
+        if (post.isPresent()) {
             Scrap newScrap = Scrap.builder()
                     .post(post.get())
-                    .userInfo(userInfo.get()).build();
+                    .userInfo(userInfo).build();
 
             scrapRepository.save(newScrap);
 
@@ -161,8 +156,8 @@ public class BoardService {
     }
 
     @Transactional
-    public void deleteScrap(Long postId, Long userId) {
-        Optional<Scrap> scrap = scrapRepository.findByUserInfoAndPost(postId, userId);
+    public void deleteScrap(Long postId, UserInfo userInfo) {
+        Optional<Scrap> scrap = scrapRepository.findByUserInfoAndPost(postId, userInfo.getCode());
 
         if (scrap.isPresent()) {
             scrapRepository.delete(scrap.get());
