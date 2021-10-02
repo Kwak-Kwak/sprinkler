@@ -1,3 +1,4 @@
+
 package com.sprinkler.kwakkwak.domain;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -96,3 +98,4 @@ public class UserInfo implements UserDetails {
         return true; // true -> 사용 가능
     }
 }
+
