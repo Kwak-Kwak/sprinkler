@@ -41,25 +41,24 @@
 <script type="text/javascript" src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 <script src="https://uicdn.toast.com/editor-plugin-code-syntax-highlight/latest/toastui-editor-plugin-code-syntax-highlight-all.min.js"></script>
 <section class="container pt-2 pb-5">
-    <input type="text" class="form-control my-3 py-3 h2" placeholder="제목을 입력해주세요!" aria-label="Username" aria-describedby="basic-addon1" style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;">
-    <input type="text" id="tag" class="form-control my-3 px-auto py-2" placeholder="태그를 추가해주세요" aria-label="Username" aria-describedby="basic-addon1" style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;">
-    <div id="tag_list" class="d-flex">
+    <form action="/community/write" onsubmit="getMarkDown();" id="form" method="post">
+        <input type="text" class="form-control my-3 py-3 h2" name="title" placeholder="제목을 입력해주세요!" aria-label="Username" aria-describedby="basic-addon1" style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;">
+        <input type="text" id="tag" class="form-control my-3 px-auto py-2" placeholder="태그를 추가해주세요" aria-label="Username" aria-describedby="basic-addon1" style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;">
+        <div id="tag_list" class="d-flex">
 
-    </div>
-    <select class="form-select mb-3" aria-label="Default select example">
-        <option selected>카테고리를 정해주세요!</option>
-        <option value="free">자유/잡담</option>
-        <option value="question">질의응답</option>
-        <option value="study">스터디</option>
-    </select>
-    <div id="editor"></div>
-    <div class="d-flex justify-content-end my-2">
-        <button type="button" class="btn btn-dark mx-1">작성 취소</button>
-        <button type="button" class="btn btn-primary">작성 끝</button>
-    </div>
-    <form action="/community" method="post">
-        <input type="hidden">
-        
+        </div>
+        <select class="form-select mb-3" name="boardId" aria-label="Default select example">
+            <option selected>카테고리를 정해주세요!</option>
+            <option value="3">자유/잡담</option>
+            <option value="2">질의응답</option>
+            <option value="1">스터디</option>
+        </select>
+        <div id="editor"></div>
+        <div class="d-flex justify-content-end my-2">
+            <button type="button" class="btn btn-dark mx-1">작성 취소</button>
+            <button type="button" class="btn btn-primary" onclick="document.getElementById('form').submit();">작성 끝</button>
+        </div>
+        <input type="hidden" id="context" name="context" value="">
     </form>
 </section>
 
@@ -81,9 +80,10 @@ const { codeSyntaxHighlight } = Editor.plugin;
   previewStyle: 'tab'
 });
 
-
-editor.getMarkdown();
-
+$(document).keyup(function(){
+    var context = editor.getMarkdown();
+    $('#context').val(context);
+});
 // 태그 추가
  $('#tag').keyup(function(){
     if(event.keyCode === 13 || event.keyCode === 188){
@@ -127,7 +127,6 @@ editor.getMarkdown();
       }
     });
   }
-
 
 </script>
 <!-- End Script -->

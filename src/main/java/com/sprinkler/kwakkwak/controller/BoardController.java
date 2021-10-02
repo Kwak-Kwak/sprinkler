@@ -51,28 +51,7 @@ public class BoardController {
         return "community";
     }
 
-    @GetMapping("/community/study/{postId}")
-    public String getStudyPost(@PathVariable String postId, Model model) {
-        Long id = Long.parseLong(postId);
-        Optional<Post> post = boardService.getPost(id);
-        List<Comment> comment = boardService.getComment(id);
-        model.addAttribute("post", post.get());
-        model.addAttribute("commentList", comment);
-        return "view";
-    }
-
-    @GetMapping("/community/question/{postId}")
-    public String getQuestionPost(@PathVariable String postId, Model model) {
-        Long id = Long.parseLong(postId);
-        Optional<Post> post = boardService.getPost(id);
-        List<Comment> comment = boardService.getComment(id);
-        model.addAttribute("post", post.get());
-        model.addAttribute("commentList", comment);
-        return "view";
-    }
-
-
-    @GetMapping("/community/free/{postId}")
+    @GetMapping("/community/{postId}")
     public String getFreePost(@PathVariable String postId, Model model) {
         Long id = Long.parseLong(postId);
         Optional<Post> post = boardService.getPost(id);

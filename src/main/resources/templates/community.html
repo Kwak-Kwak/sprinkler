@@ -96,12 +96,12 @@
                             카테고리
                         </button>
                         <div class="dropdown-menu" id="drop-content" aria-labelledby="dropdownMenu2" style="display:none;">
-                            <button class="dropdown-item" type="button">전체</button>
-                            <button class="dropdown-item" type="button">자유/잡담</button>
-                            <button class="dropdown-item" type="button">질의응답</button>
-                            <button class="dropdown-item" type="button">스터디</button>
+                            <button class="dropdown-item" type="button" onclick="location.href='/comunity'">전체</button>
+                            <button class="dropdown-item" type="button" onclick="location.href='/comunity/free'">자유</button>
+                            <button class="dropdown-item" type="button" onclick="location.href='/comunity/question'">질의응답</button>
+                            <button class="dropdown-item" type="button" onclick="location.href='/comunity/study'">스터디</button>
                         </div>
-                        <button class="btn btn-primary">글쓰기</button>
+                        <button class="btn btn-primary"><a href="/community/write" class="m-0 p-0 text-white text-decoration-none">글쓰기</a></button>
                     </div>
                 </div>
             </div>
