@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://thymeleaf.org">
+<head>
+    <title>새글 작성</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="../static/img/apple-icon.png">
+    <link rel="shortcut icon" type="/image/x-icon" href="../static/img/favicon.ico">
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="../static/css/templatemo.css" th:href="@{/css/templatemo.css}">
+    <link rel="stylesheet" href="../static/css/custom.css" th:href="@{/css/custom.css}">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BMHANNAPro:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="../static/css/fontawesome.min.css">
+
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://uicdn.toast.com/editor-plugin-code-syntax-highlight/latest/toastui-editor-plugin-code-syntax-highlight.min.css"
+    />
+    <!--
+
+
+    TemplateMo 559 Zay Shop
+
+    https://templatemo.com/tm-559-zay-shop
+
+    -->
+</head>
+<body class="bg-light" >
+<section class="container py-5">
+    <div class="d-flex form align-items-center my-5 bg-white shadow">
+        <div class="d-flex flex-column col  justify-content-center align-items-center">
+            <div class="d-flex flex-column col  justify-content-center align-items-center">
+                <img class="login_profile" src="../static/img/sit.png" alt="glass_jandy">
+                <a class="text-decoration-none h1" href="#">곽곽</a>
+                <p>소개부분</p>
+                <p>개발자 커뮤니티 - 서울과학기술대학교</p>
+            </div>
+        </div>
+        <div class="d-flex flex-column col my-auto px-2 justify-content-center align-items-center">
+            <form th:action="@{/user}" method="POST" id="form">
+                닉네임  <input type="text" name="nickname" class="form-control my-2">
+                자기소개 <br>
+                <textarea class="form-control col-sm-5 my-2" rows="5"></textarea>
+                기술스택  <input type="text" id="tag" class="form-control my-2" placeholder="입력 후, 엔터 혹은 쉼표 입력시 추가" aria-label="Username" aria-describedby="basic-addon1">
+                <div id="tag_list" class="d-flex">
+
+                </div>
+                블로그 주소 <input type="text" name="blog" class="form-control my-2">
+                깃허브 주소 <input type="text" name="github" class="form-control my-2">
+                <button type="button" class="btn btn-dark ms-auto my-2">돌아가기</button>
+                <button type="button" class="btn btn-primary ms-auto my-2" onclick="document.getElementById('form').submit();">작성완료</button>
+            </form>
+        </div>
+    </div>
+</section>
+<script src="../static/js/jquery-1.11.0.min.js" th:src="@{/js/jquery-1.11.0.min.js}"></script>
+<script src="../static/js/jquery-migrate-1.2.1.min.js" th:src="@{/js/jquery-migrate-1.2.1.min.js}"></script>
+<script src="../static/js/bootstrap.bundle.min.js" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script src="../static/js/templatemo.js" th:src="@{/js/templatemo.js}"></script>
+<script src="../static/js/custom.js" th:src="@{/js/custom.js}"></script>
+<script>
+// 태그 추가
+ $('#tag').keyup(function(){
+    console.log("tag");
+    if(event.keyCode === 13 || event.keyCode === 188){
+      var tag = $('#tag').val().split(',')[0];
+      if(tag){
+        var hidden = document.getElementsByName("tag");
+        var chk=true;
+        hidden.forEach(function(element){
+           if(tag===element.value){
+                chk=false;
+           }
+        });
+        if(chk){
+            var input = document.createElement("input");
+            var div = document.createElement("div");
+            input.setAttribute("type","hidden");
+            input.setAttribute("value",tag);
+            input.setAttribute("name","tag");
+
+            div.setAttribute("class","btn btn-primary py-1 mx-1 mb-3");
+            div.onclick=function(){del_tag(this);};
+            div.innerHTML = tag;
+
+            document.getElementById("tag_list").appendChild(div);
+            document.getElementById("tag_list").appendChild(input);
+
+        $('#tag').val('');
+        }
+      }
+    }
+  });
+
+  //태그 삭제 기능
+  function del_tag(obj){
+    var input = document.getElementsByName("tag");
+    input.forEach(function(element){
+      if(obj.innerHTML===element.value){
+        document.getElementById("tag_list").removeChild(element);
+        document.getElementById("tag_list").removeChild(obj);
+        return;
+      }
+    });
+  }
+
+</script>
+</body>
+</html>
