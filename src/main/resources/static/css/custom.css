@@ -19,29 +19,26 @@ font-style: normal;
     border-bottom : 2px solid black;
 }
 
-#first {
+.first {
     background-color : #FAFAD2;
 }
 
-#second {
+.second {
     background-color : #FFEFD5;
 }
-#third {
+.third {
     background-color : #FDF5E6;
 }
 
-#fourth{
+.fourth{
     background-color : #dcdcdc;
 }
 
-#fifth {
+.fifth {
     background-color: #bebebe;
 }
 
-#crown {
-   background-url : '../static/img/crown';
 
-}
 .rank_profile {
     width : 100px;
     height : 100px;
@@ -67,4 +64,26 @@ font-style: normal;
 .link_image{
     width: 50px;
     height : 50px;
+}
+
+.title {
+    display:-webkit-box;
+    white-space:normal;
+    -webkit-line-clamp:1;
+    -webkit-box-orient:vertical;
+    overflow: hidden;
+}
+
+.content {
+    display:-webkit-box;
+    white-space:normal;
+    -webkit-line-clamp:3;
+    -webkit-box-orient:vertical;
+    overflow: hidden;
+}
+
+@media (width <720){
+ .card-img-top {
+ height : 60vh;
+ }
 }
