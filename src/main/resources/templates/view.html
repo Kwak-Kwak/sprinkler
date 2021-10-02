@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="/static/img/apple-icon.png">
-    <link rel="shortcut icon" type="/image/x-icon" href="/static/img/favicon.ico">
+    <link rel="apple-touch-icon" href="../static/img/apple-icon.png">
+    <link rel="shortcut icon" type="/image/x-icon" href="../static/img/favicon.ico">
 
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
     <link rel="stylesheet" href="../static/css/templatemo.css" th:href="@{/css/templatemo.css}">
@@ -15,6 +15,7 @@
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="../static/css/fontawesome.min.css" th:href="@{/css/fontawesome.min.css}">
+
 
     <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
     <link
@@ -79,10 +80,10 @@
                 <span>이름(닉네임)</span><span> · </span><span>2021-09-26</span>
             </div>
             <div class="py-2">
-                <img id="unlike" src="/static/img/unheart.png" style="width: 20px;" alt="unlike" onclick="Like();">
-                <img id="like" src="/static/img/heart.png" style="width: 20px; display: none;" alt="like" onclick="unLike();">
-                <img id="unscrap" src="/static/img/unstar.png" class="ms-2" style="width: 20px;" alt="unscrap" onclick="Scrap();">
-                <img id="scrap" src="/static/img/star.png" class="ms-2" style="width: 20px;display: none;" alt="scrap" onclick="unScrap();">
+                <img id="unlike" src="../static/img/unheart.png" style="width: 20px;" alt="unlike" onclick="Like();">
+                <img id="like" src="../static/img/heart.png" style="width: 20px; display: none;" alt="like" onclick="unLike();">
+                <img id="unscrap" src="../static/img/unstar.png" class="ms-2" style="width: 20px;" alt="unscrap" onclick="Scrap();">
+                <img id="scrap" src="../static/img/star.png" class="ms-2" style="width: 20px;display: none;" alt="scrap" onclick="unScrap();">
             </div>
         </div>
         <div class="d-flex mt-1 mb-3">
@@ -91,7 +92,7 @@
         </div>
         <div id="viewer"></div>
         <div class="d-flex my-5 py-3 align-items-center">
-            <img src="/static/img/profile.png" style="width:150px; height:150px;" alt="profile" class="rounded-circle">
+            <img src="../static/img/profile.png" style="width:150px; height:150px;" alt="profile" class="rounded-circle">
             <div class="d-flex flex-column">
                 <span class="h3 px-3">떵웅이</span>
                 <span class="h6 px-3">개발자에서 벗어나고싶어</span>
@@ -104,7 +105,7 @@
             <button class="btn btn-success ms-auto">댓글 작성</button>
             <div class="d-flex flex-column">
                 <div class="d-flex">
-                    <img src="/static/img/profile_2.jpg" style="width:100px; height:100px;" alt="profile" class="rounded-circle">
+                    <img src="../static/img/profile_2.jpg" style="width:100px; height:100px;" alt="profile" class="rounded-circle">
                     <div class="d-flex flex-column justify-content-center">
                         <span class="h6 px-3">일기호</span>
                         <span class="h6 px-3 text-light ms-auto">2021-09-26</span>
@@ -118,7 +119,7 @@
             </div>
             <div class="d-flex flex-column">
                 <div class="d-flex">
-                    <img src="/static/img/profile_3.png" style="width:100px; height:100px;" alt="profile" class="rounded-circle">
+                    <img src="../static/img/profile_3.png" style="width:100px; height:100px;" alt="profile" class="rounded-circle">
                     <div class="d-flex flex-column justify-content-center">
                         <span class="h6 px-3">컴공먹꼬자</span>
                         <span class="h6 px-3 text-light ms-auto">2021-09-26</span>
@@ -143,6 +144,7 @@
 <script src="../static/js/bootstrap.bundle.min.js" th:src="@{/js/bootstrap.bundle.min.js}"></script>
 <script src="../static/js/templatemo.js" th:src="@{/js/templatemo.js}"></script>
 <script src="../static/js/custom.js" th:src="@{/js/custom.js}"></script>
+
 <script>
 const { Editor } = toastui;
 

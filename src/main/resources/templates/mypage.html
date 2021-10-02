@@ -2,20 +2,20 @@
 <html lang="en">
 
 <head>
-    <title>Zay Shop eCommerce HTML CSS Template</title>
+    <title>프로필</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="/static/img/apple-icon.png">
-    <link rel="shortcut icon" type="/image/x-icon" href="/static/img/favicon.ico">
+    <link rel="apple-touch-icon" href="../static/img/apple-icon.png">
+    <link rel="shortcut icon" type="/image/x-icon" href="../static/img/favicon.ico">
 
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/templatemo.css">
-    <link rel="stylesheet" href="/static/css/custom.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/templatemo.css">
+    <link rel="stylesheet" href="../static/css/custom.css">
 
     <!-- Load fonts style after rendering the layout styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="/static/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BMHANNAPro:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="../static/css/fontawesome.min.css">
     <!--
 
     TemplateMo 559 Zay Shop
@@ -25,10 +25,10 @@
     -->
 </head>
 
-<body>
+<body class="bg-light">
 
 <!-- Header -->
-<nav class="navbar navbar-expand-lg navbar-light shadow">
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container d-flex justify-content-between align-items-center">
 
         <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
@@ -62,64 +62,162 @@
 </nav>
 <!-- Close Header -->
 
-<section class="container px-5 pt-5">
-    <div class="d-flex justify-content-between">
-        <span><strong>My Profile</strong></span>
-        <button type="button" class="btn btn-primary">프로필 수정하기</button>
-    </div>
-    <div class="row">
-        <div class="col-12 col-md-3 p-5 mt-2">
-            <a href="#"><img src="/static/img/category_img_01.jpg" class="rounded-circle img-fluid border"></a>
-            <h5 class="text-center mt-3 mb-3">홍성웅</h5>
-            <h6 class="text-center mt-3 mb-3">Backend Developer</h6>
+<section class="container my-5 px-5 pt-5">
+    <div class="d-flex">
+        <div class="d-flex flex-column  col-12 col-md-4 bg-white">
+                <img src="../static/img/profile.png" class="rounded-circle img-fluid mypage_profile my-5 mx-auto">
+                <h5 class="text-center">웅사가</h5>
+                <h6 class="text-center">Backend Developer</h6>
+            <div class="my-5 mx-5">
+                <h5 class="my-1">자기소개</h5>
+                <p class="my-4">나는 성웅이얌</p>
+            </div>
+            <h5 class="mx-5">기술 스택</h5>
+            <div class="d-flex pt-3 pb-3 mx-5">
+                <button type="button" class="btn btn-info m-1">Node.js</button>
+                <button type="button" class="btn btn-info m-1">Java</button>
+            </div>
+            <h5 class="m-5">개인사이트</h5>
+            <div class="d-flex justify-content-center">
+                <div class="d-flex flex-column mx-3">
+                    <a class="text-decoration-none" href="#">
+                        <img src="../static/img/blog.png" alt="blog" class="link_image my-2">
+                    </a>
+                    <span>블로그</span>
+                </div>
+                <div class="d-flex flex-column mx-3">
+
+                    <a class="text-decoration-none" href="#">
+                        <img src="../static/img/github.png" alt="github" class="link_image my-2">
+                    </a>
+                    <span>깃허브</span>
+                </div>
+            </div>
+            <button class="btn btn-dark m-5 py-2 ">프로필 수정</button>
         </div>
-       <div class="d-flex col-12 col-md-3 p-5 mt-5 ms-auto align-items-center">
-           <div class="d-flex flex-column">
-               <img src="" alt="blog">
-               <a class="nav-link" href="#">Blog</a>
-           </div>
-           <div class="d-flex flex-column">
-               <img src="" alt="github">
-               <a class="nav-link" href="#">Github</a>
-           </div>
-       </div>
-    </div>
-</section>
-<hr class="my-0">
-<section class="container py-5">
-    <div class="d-flex justify-content-between">
-        <h3>기본정보</h3>
-    </div>
-    <div class="row">
-        <div class="col-12 col-md-6 p-3 mt-2">
+        <div class="d-flex flex-column col-12 col-md-8 ms-5">
+            <div class="d-flex justify-content-between">
+                <h5 class="m-3">곽곽 커뮤니티 | 내 게시글</h5>
+                <a class="m-3 text-decoration-none" href="#">전체보기</a>
+            </div>
+            <div class="d-flex justify-content-between">
+                <div class="card h-60 w-25">
+                    <a href="shop-single.html">
+                        <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">제목</a>
+                        <p class="text-sm">2021-09-25 - 10개의 댓글</p>
+                        <ul class="list-unstyled d-flex justify-content-between mb-0">
+                            <li>작성자</li>
+                            <li class="text-right">❤(10)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card h-60 w-25">
+                    <a href="shop-single.html">
+                        <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">제목</a>
+                        <p class="text-sm">2021-09-25 - 10개의 댓글</p>
+                        <ul class="list-unstyled d-flex justify-content-between mb-0">
+                            <li>작성자</li>
+                            <li class="text-right">❤(10)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card h-60 w-25">
+                    <a href="shop-single.html">
+                        <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">제목</a>
+                        <p class="text-sm">2021-09-25 - 10개의 댓글</p>
+                        <ul class="list-unstyled d-flex justify-content-between mb-0">
+                            <li>작성자</li>
+                            <li class="text-right">❤(10)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card h-60 w-25">
+                    <a href="shop-single.html">
+                        <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">제목</a>
+                        <p class="text-sm">2021-09-25 - 10개의 댓글</p>
+                        <ul class="list-unstyled d-flex justify-content-between mb-0">
+                            <li>작성자</li>
+                            <li class="text-right">❤(10)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between">
+                <h5 class="m-3">곽곽 커뮤니티 | 찜 목록</h5>
+                <a class="m-3 text-decoration-none" href="#">전체보기</a>
+            </div>
+            <div class="d-flex justify-content-between">
+                <div class="card h-60 w-25">
+                    <a href="shop-single.html">
+                        <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">제목</a>
+                        <p class="text-sm">2021-09-25 - 10개의 댓글</p>
+                        <ul class="list-unstyled d-flex justify-content-between mb-0">
+                            <li>작성자</li>
+                            <li class="text-right">❤(10)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card h-60 w-25">
+                    <a href="shop-single.html">
+                        <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">제목</a>
+                        <p class="text-sm">2021-09-25 - 10개의 댓글</p>
+                        <ul class="list-unstyled d-flex justify-content-between mb-0">
+                            <li>작성자</li>
+                            <li class="text-right">❤(10)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card h-60 w-25">
+                    <a href="shop-single.html">
+                        <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">제목</a>
+                        <p class="text-sm">2021-09-25 - 10개의 댓글</p>
+                        <ul class="list-unstyled d-flex justify-content-between mb-0">
+                            <li>작성자</li>
+                            <li class="text-right">❤(10)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card h-60 w-25">
+                    <a href="shop-single.html">
+                        <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">제목</a>
+                        <p class="text-sm">2021-09-25 - 10개의 댓글</p>
+                        <ul class="list-unstyled d-flex justify-content-between mb-0">
+                            <li>작성자</li>
+                            <li class="text-right">❤(10)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <h5 class="m-4">곽곽 랭킹 | Github</h5>
             <div class="d-flex flex-column">
-                <h5>Introduce</h5>
-                <div class="pt-3 pb-3">
-                    <p>나는 성웅이얌</p>
-                </div>
-                <h5>Tech-Stack</h5>
-                <div class="d-flex pt-3 pb-3">
-                    <button type="button" class="btn btn-info m-1">Node.js</button>
-                    <button type="button" class="btn btn-info m-1">Java</button>
-                </div>
+                <h6 class="m-3">잔디 심기</h6>
+                <img src="../static/img/commit.png" alt="커밋">
             </div>
-        </div>
-        <div class="col-12 col-md-6 p-3 mt-2">
-            <h5>Profile</h5>
-            <div class="d-flex flex-column pt-3 pb-3">
-                <div class="d-flex justify-content-between pb-1" style="border-bottom: 1px solid #bcbcbc;">
-                    <p>이름</p>
-                    <p>홍성웅</p>
-                </div>
-                <div class="d-flex justify-content-between pb-1 pt-3" style="border-bottom: 1px solid #bcbcbc;">
-                    <p>이메일</p>
-                    <p>iqeq1945@gmail.com</p>
-                </div>
-                <div class="d-flex justify-content-between pb-1 pt-3" style="border-bottom: 1px solid #bcbcbc;">
-                    <p>전공</p>
-                    <p>컴퓨터공학과</p>
-                </div>
-            </div>
+
         </div>
     </div>
 </section>
