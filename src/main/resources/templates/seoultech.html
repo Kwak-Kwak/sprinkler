@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>SeoultechNotice</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class = "container">
+
+    <h1 class="display-4">Seoultech Noticepage</h1>
+    <p class="lead">서울과학기술대학교 학사공지</p>
+
+    <table class= "table">
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>날짜</th>
+            <th>조회수</th>
+        </tr>
+        <tr th:each = "stat : ${seoultechNotice}">
+            <td th:text = "${stat.postNumber}"></td>
+            <td th:text = "${stat.postTitle}"></td>
+            <td th:text = "${stat.postWriter}"></td>
+            <td th:text = "${stat.postDate}"></td>
+            <td th:text = "${stat.postViewNumber}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
