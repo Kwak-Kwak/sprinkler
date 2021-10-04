@@ -27,16 +27,23 @@ public class Post extends BaseTimeEntity {
 
     private Long commentNum;
 
+    private Long heartNum;
+
     @Builder
-    public Post(UserInfo userInfo,Long boardId, String title, String context, Long commentNum) {
+    public Post(UserInfo userInfo,Long boardId, String title, String context) {
         this.userInfo = userInfo;
         this.boardId = boardId;
         this.title = title;
         this.context = context;
-        this.commentNum = commentNum;
+        this.commentNum = 0L;
+        this.heartNum = 0L;
     }
 
-    public void update(int amount) {
+    public void updateHeart(long amount) {
+        heartNum+= amount;
+    }
+
+    public void updateComment(long amount) {
         commentNum += amount;
     }
 
