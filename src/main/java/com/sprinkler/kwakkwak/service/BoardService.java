@@ -48,7 +48,8 @@ public class BoardService {
                 .boardId(request.getBoardId())
                 .context(request.getContext())
                 .title(request.getTitle())
-                .userInfo(userInfo).build();
+                .userInfo(userInfo)
+                .build();
 
         postRepository.save(post);
     }
@@ -73,32 +74,31 @@ public class BoardService {
     }
 
     @Transactional
-    public void saveComment(Long boardId, Long postId, CreateCommentRequest request) {
-//        Optional<UserInfo> userInfo = userInfoRepository.findById(request.getUserInfoCode());
-//        Optional<Post> post = postRepository.findById(postId);
-//
-//        if (userInfo.isPresent() && post.isPresent()) {
-//            Comment comment = Comment.builder()
-//                    .boardId(boardId)
-//                    .context(request.getContext())
-//                    .post(post.get())
-//                    .userinfo(userInfo.get())
-//                    .build();
-//            commentRepository.save(comment);
-//
-//            post.get().update(1);
-//
-//        } else {
-//            // TODO : 에러 처리
-//        }
+    public void saveComment(Long postId ,CreateCommentRequest request, UserInfo userInfo) {
+        Optional<Post> post = postRepository.findById(postId);
+
+        if (post.isPresent()) {
+            Comment comment = Comment.builder()
+                    .boardId(post.get().getBoardId())
+                    .context(request.getContext())
+                    .post(post.get())
+                    .userinfo(userInfo)
+                    .build();
+            commentRepository.save(comment);
+
+            post.get().updateComment(1L);
+
+        }
     }
 
     @Transactional
-    public void deleteComment(Long commentId) {
+    public void deleteComment(Long postId,Long commentId) {
         Optional<Comment> comment = commentRepository.findById(commentId);
+        Optional<Post> post = postRepository.findById(postId);
 
-        if (comment.isPresent()) {
+        if (comment.isPresent() && post.isPresent()) {
             commentRepository.delete(comment.get());
+            post.get().updateComment(-1L);
         }
     }
 
@@ -114,6 +114,8 @@ public class BoardService {
                     .build();
 
             heartRepository.save(newHeart);
+
+            post.get().updateHeart(1L);
         }
     }
 
@@ -127,9 +129,11 @@ public class BoardService {
     @Transactional
     public void deleteLike(Long postId, UserInfo userInfo) {
         Optional<Heart> like = heartRepository.findByUserInfoAndPost(postId, userInfo.getCode());
+        Optional<Post> post = postRepository.findById(postId);
 
         if (like.isPresent()) {
             heartRepository.delete(like.get());
+            post.get().updateHeart(-1L);
         }
     }
 

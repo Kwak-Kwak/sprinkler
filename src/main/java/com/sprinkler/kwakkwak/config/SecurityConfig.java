@@ -28,8 +28,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        http
 //                .csrf().disable();
 //
-//        http
-//                .csrf().disable();
 
         http
                 .authorizeRequests() // 접근 인증 설정
@@ -43,7 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout() // 로그아웃 설정
                 .logoutSuccessUrl("/") // 로그아웃 성공 후 주소
-                .invalidateHttpSession(true); // 세션 초기화
+                .invalidateHttpSession(true);// 세션 초기화
+
     }
 
     @Override

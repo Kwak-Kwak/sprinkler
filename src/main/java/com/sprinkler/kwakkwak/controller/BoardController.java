@@ -4,6 +4,7 @@ package com.sprinkler.kwakkwak.controller;
 import com.sprinkler.kwakkwak.domain.Comment;
 import com.sprinkler.kwakkwak.domain.Post;
 import com.sprinkler.kwakkwak.domain.UserInfo;
+import com.sprinkler.kwakkwak.dto.CreateCommentRequest;
 import com.sprinkler.kwakkwak.dto.CreatePostRequest;
 import com.sprinkler.kwakkwak.service.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -64,13 +65,30 @@ public class BoardController {
 
     @GetMapping("/community/write")
     public String write() {
+        System.out.println("write");
         return "write";
     }
 
     @PostMapping("/community/write")
-    public RedirectView savePost(@RequestBody CreatePostRequest request, @AuthenticationPrincipal UserInfo userInfo) {
-        boardService.savePost(request, userInfo);
+    public RedirectView savePost(CreatePostRequest request,@AuthenticationPrincipal UserInfo userInfo) {
+        boardService.savePost(request,userInfo);
         return new RedirectView("/community");
+    }
+
+    @PostMapping("/community/{postId}")
+    public RedirectView saveComment(@PathVariable String postId, CreateCommentRequest request, @AuthenticationPrincipal UserInfo userInfo) {
+        Long id = Long.parseLong(postId);
+        boardService.saveComment(id,request,userInfo);
+        return new RedirectView("/community/{postId}");
+    }
+
+    @DeleteMapping("/community/{postId}/{commentId}")
+    public RedirectView deleteComment(@PathVariable String postId, @PathVariable String commentId) {
+        Long post_id = Long.parseLong(postId);
+        Long comment_id = Long.parseLong(commentId);
+
+        boardService.deleteComment(post_id,comment_id);
+        return new RedirectView("/community/{postId}");
     }
 
     @GetMapping("/community/{postId}/like")
@@ -101,15 +119,6 @@ public class BoardController {
         return new RedirectView("/community/{postId}");
     }
 
-    @GetMapping("/test")
-    public String currentUserName(@AuthenticationPrincipal UserInfo userInfo) {
-        String email = userInfo.getEmail();
-
-
-        System.out.println(email);
-
-        return "index";
-    }
 
 
 
