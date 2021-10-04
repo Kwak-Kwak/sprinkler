@@ -2,7 +2,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://thymeleaf.org">
 <head>
-    <title>새글 작성</title>
+    <title>글 보기</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -42,7 +42,7 @@
     <div class="container d-flex justify-content-between align-items-center">
 
         <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-            Zay
+            <img src="../static/img/glass_sit.png"  style="height: 10vh;" alt="">곽곽
         </a>
 
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,10 +74,10 @@
 <script src="https://uicdn.toast.com/editor-plugin-code-syntax-highlight/latest/toastui-editor-plugin-code-syntax-highlight-all.min.js"></script>
 <section class="container py-5" >
     <div class="d-flex flex-column px-5 mx-5 my-5">
-        <h2>제목</h2>
+        <h2>[TIL] 퀵소트</h2>
         <div class="d-flex mt-3">
             <div class="py-2 me-auto">
-                <span>이름(닉네임)</span><span> · </span><span>2021-09-26</span>
+                <span>웅사가</span><span> · </span><span>2021-09-26</span>
             </div>
             <div class="py-2">
                 <img id="unlike" th:src="@{/img/unheart.png}" src="../static/img/unheart.png" style="width: 20px;" alt="unlike" onclick="Like();">
@@ -91,10 +91,11 @@
             <button type="button" class="btn btn-secondary me-2">react</button>
         </div>
         <div id="viewer"></div>
+        <img src="../static/img/code.png" style="width:50vw;" alt="">
         <div class="d-flex my-5 py-3 align-items-center">
-            <img src="../static/img/profile.png" style="width:150px; height:150px;" alt="profile" class="rounded-circle">
+            <img src="../static/img/jandy.png" style="width:150px; height:150px;" alt="profile" class="rounded-circle">
             <div class="d-flex flex-column">
-                <span class="h3 px-3">떵웅이</span>
+                <span class="h3 px-3">웅사가</span>
                 <span class="h6 px-3">개발자에서 벗어나고싶어</span>
             </div>
         </div>
@@ -151,7 +152,7 @@ const viewer = new Editor.factory({
         el: document.querySelector('#viewer'),
         viewer: true,
         height: '75vh',
-        initialValue: "### Search Service 구현 \n > cursor 보다 skip이 pagenation 기능에 적합할 것 같아 skip을 이용하여 구현을 했습니다."
+        initialValue: "### 퀵소트 구현 \n"
 });
 
 const Like = () => {

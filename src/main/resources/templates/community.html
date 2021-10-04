@@ -91,223 +91,224 @@
                 <a class="nav-link px-0 pe-3 text-black" href="#">인기</a>
                 <a class="nav-link px-0 pe-3 text-black" href="#">최신</a>
                 <div class="btn-group ms-auto">
-                    <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="dropdown show mx-2">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             카테고리
-                        </button>
-                        <div class="dropdown-menu" id="drop-content" aria-labelledby="dropdownMenu2" style="display:none;">
-                            <button class="dropdown-item" type="button">전체</button>
-                            <button class="dropdown-item" type="button">자유/잡담</button>
-                            <button class="dropdown-item" type="button">질의응답</button>
-                            <button class="dropdown-item" type="button">스터디</button>
+                        </a>
+                        <div class="dropdown-menu" id="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="/community">전체</a>
+                            <a class="dropdown-item" href="/community/free">자유</a>
+                            <a class="dropdown-item" href="/community/question">질의응답</a>
+                            <a class="dropdown-item" href="/community/study">스터디</a>
                         </div>
-                        <button class="btn btn-primary">글쓰기</button>
                     </div>
+                    <button class="btn btn-primary"><a href="/community/write" class="m-0 p-0 text-white text-decoration-none">글쓰기</a></button>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="row" th:each="post : ${postList}">
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-80">
+    <div class="row" th:each="post : ${postList}">
+        <div class="col-12 col-md-4 mb-4">
+            <div class="card h-80">
 
-                    <a href="shop-single.html">
-                        <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark" th:text="${post.title}"></a>
-                        <p class="card-text pt-3" th:text="${post.context}">
-                        </p>
-                        <p class="text-sm">2021-09-25 - 10개의 댓글</p>
-                        <ul class="list-unstyled d-flex justify-content-between mb-0">
-                            <li>작성자</li>
-                            <li class="text-right">❤(10)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-3 mb-4">
-                <div class="card card-h">
-                    <a href="shop-single.html">
-                        <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark title">제목</a>
-                        <p class="card-text pt-3 content">
-                            비가 오고
-                            네가 생각나
-                            비가 오고 또 비가 오고
-                            슬픈 음악이 흐르면
-                            옛 노래처럼 yeah
-                            네가 생각나
-                            네가 생각나
-                        </p>
-                        <p class="text-sm">2021-09-25 - 10개의 댓글</p>
-                        <ul class="list-unstyled d-flex justify-content-between mb-0">
-                            <li>작성자</li>
-                            <li class="text-right">❤(10)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-3 mb-4">
-                <div class="card card-h">
-                    <a href="shop-single.html">
-                        <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark title">제목</a>
-                        <p class="card-text pt-3 content">
-                            비가 오고
-                            네가 생각나
-                            비가 오고 또 비가 오고
-                            슬픈 음악이 흐르면
-                            옛 노래처럼 yeah
-                            네가 생각나
-                            네가 생각나
-                        </p>
-                        <p class="text-sm">2021-09-25 - 10개의 댓글</p>
-                        <ul class="list-unstyled d-flex justify-content-between mb-0">
-                            <li>작성자</li>
-                            <li class="text-right">❤(10)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-3 mb-4">
-                <div class="card card-h">
-                    <a href="shop-single.html">
-                        <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark title">제목</a>
-                        <p class="card-text pt-3 content">
-                            비가 오고
-                            네가 생각나
-                            비가 오고 또 비가 오고
-                            슬픈 음악이 흐르면
-                            옛 노래처럼 yeah
-                            네가 생각나
-                            네가 생각나
-                        </p>
-                        <p class="text-sm">2021-09-25 - 10개의 댓글</p>
-                        <ul class="list-unstyled d-flex justify-content-between mb-0">
-                            <li>작성자</li>
-                            <li class="text-right">❤(10)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-3 mb-4">
-                <div class="card card-h">
-                    <a href="shop-single.html">
-                        <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark title">제목</a>
-                        <p class="card-text pt-3 content">
-                            비가 오고
-                            네가 생각나
-                            비가 오고 또 비가 오고
-                            슬픈 음악이 흐르면
-                            옛 노래처럼 yeah
-                            네가 생각나
-                            네가 생각나
-                        </p>
-                        <p class="text-sm">2021-09-25 - 10개의 댓글</p>
-                        <ul class="list-unstyled d-flex justify-content-between mb-0">
-                            <li>작성자</li>
-                            <li class="text-right">❤(10)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-3 mb-4">
-                <div class="card card-h">
-                    <a href="shop-single.html">
-                        <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark title">제목</a>
-                        <p class="card-text pt-3 content">
-                            비가 오고
-                            네가 생각나
-                            비가 오고 또 비가 오고
-                            슬픈 음악이 흐르면
-                            옛 노래처럼 yeah
-                            네가 생각나
-                            네가 생각나
-                        </p>
-                        <p class="text-sm">2021-09-25 - 10개의 댓글</p>
-                        <ul class="list-unstyled d-flex justify-content-between mb-0">
-                            <li>작성자</li>
-                            <li class="text-right">❤(10)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-3 mb-4">
-                <div class="card card-h">
-                    <a href="shop-single.html">
-                        <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark title">제목</a>
-                        <p class="card-text pt-3 content">
-                            비가 오고
-                            네가 생각나
-                            비가 오고 또 비가 오고
-                            슬픈 음악이 흐르면
-                            옛 노래처럼 yeah
-                            네가 생각나
-                            네가 생각나
-                        </p>
-                        <p class="text-sm">2021-09-25 - 10개의 댓글</p>
-                        <ul class="list-unstyled d-flex justify-content-between mb-0">
-                            <li>작성자</li>
-                            <li class="text-right">❤(10)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-3 mb-4">
-                <div class="card card-h">
-                    <a href="shop-single.html">
-                        <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark title">제목</a>
-                        <p class="card-text pt-3 content">
-                            비가 오고
-                            네가 생각나
-                            비가 오고 또 비가 오고
-                            슬픈 음악이 흐르면
-                            옛 노래처럼 yeah
-                            네가 생각나
-                            네가 생각나
-                        </p>
-                        <p class="text-sm">2021-09-25 - 10개의 댓글</p>
-                        <ul class="list-unstyled d-flex justify-content-between mb-0">
-                            <li>작성자</li>
-                            <li class="text-right">❤(10)</li>
-                        </ul>
-                    </div>
+                <a href="shop-single.html">
+                    <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+                </a>
+                <div class="card-body">
+                    <a href="shop-single.html" class="h2 text-decoration-none text-dark" th:text="${post.title}"></a>
+                    <p class="card-text pt-3" th:text="${post.context}">
+                    </p>
+                    <p class="text-sm">2021-09-25 - 10개의 댓글</p>
+                    <ul class="list-unstyled d-flex justify-content-between mb-0">
+                        <li>작성자</li>
+                        <li class="text-right">❤(10)</li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
+        <div class="col-12 col-md-3 mb-4">
+            <div class="card card-h">
+                <a href="shop-single.html">
+                    <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+                </a>
+                <div class="card-body">
+                    <a href="shop-single.html" class="h2 text-decoration-none text-dark title">제목</a>
+                    <p class="card-text pt-3 content">
+                        비가 오고
+                        네가 생각나
+                        비가 오고 또 비가 오고
+                        슬픈 음악이 흐르면
+                        옛 노래처럼 yeah
+                        네가 생각나
+                        네가 생각나
+                    </p>
+                    <p class="text-sm">2021-09-25 - 10개의 댓글</p>
+                    <ul class="list-unstyled d-flex justify-content-between mb-0">
+                        <li>작성자</li>
+                        <li class="text-right">❤(10)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-3 mb-4">
+            <div class="card card-h">
+                <a href="shop-single.html">
+                    <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+                </a>
+                <div class="card-body">
+                    <a href="shop-single.html" class="h2 text-decoration-none text-dark title">제목</a>
+                    <p class="card-text pt-3 content">
+                        비가 오고
+                        네가 생각나
+                        비가 오고 또 비가 오고
+                        슬픈 음악이 흐르면
+                        옛 노래처럼 yeah
+                        네가 생각나
+                        네가 생각나
+                    </p>
+                    <p class="text-sm">2021-09-25 - 10개의 댓글</p>
+                    <ul class="list-unstyled d-flex justify-content-between mb-0">
+                        <li>작성자</li>
+                        <li class="text-right">❤(10)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-3 mb-4">
+            <div class="card card-h">
+                <a href="shop-single.html">
+                    <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+                </a>
+                <div class="card-body">
+                    <a href="shop-single.html" class="h2 text-decoration-none text-dark title">제목</a>
+                    <p class="card-text pt-3 content">
+                        비가 오고
+                        네가 생각나
+                        비가 오고 또 비가 오고
+                        슬픈 음악이 흐르면
+                        옛 노래처럼 yeah
+                        네가 생각나
+                        네가 생각나
+                    </p>
+                    <p class="text-sm">2021-09-25 - 10개의 댓글</p>
+                    <ul class="list-unstyled d-flex justify-content-between mb-0">
+                        <li>작성자</li>
+                        <li class="text-right">❤(10)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-3 mb-4">
+            <div class="card card-h">
+                <a href="shop-single.html">
+                    <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+                </a>
+                <div class="card-body">
+                    <a href="shop-single.html" class="h2 text-decoration-none text-dark title">제목</a>
+                    <p class="card-text pt-3 content">
+                        비가 오고
+                        네가 생각나
+                        비가 오고 또 비가 오고
+                        슬픈 음악이 흐르면
+                        옛 노래처럼 yeah
+                        네가 생각나
+                        네가 생각나
+                    </p>
+                    <p class="text-sm">2021-09-25 - 10개의 댓글</p>
+                    <ul class="list-unstyled d-flex justify-content-between mb-0">
+                        <li>작성자</li>
+                        <li class="text-right">❤(10)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-3 mb-4">
+            <div class="card card-h">
+                <a href="shop-single.html">
+                    <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+                </a>
+                <div class="card-body">
+                    <a href="shop-single.html" class="h2 text-decoration-none text-dark title">제목</a>
+                    <p class="card-text pt-3 content">
+                        비가 오고
+                        네가 생각나
+                        비가 오고 또 비가 오고
+                        슬픈 음악이 흐르면
+                        옛 노래처럼 yeah
+                        네가 생각나
+                        네가 생각나
+                    </p>
+                    <p class="text-sm">2021-09-25 - 10개의 댓글</p>
+                    <ul class="list-unstyled d-flex justify-content-between mb-0">
+                        <li>작성자</li>
+                        <li class="text-right">❤(10)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-3 mb-4">
+            <div class="card card-h">
+                <a href="shop-single.html">
+                    <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+                </a>
+                <div class="card-body">
+                    <a href="shop-single.html" class="h2 text-decoration-none text-dark title">제목</a>
+                    <p class="card-text pt-3 content">
+                        비가 오고
+                        네가 생각나
+                        비가 오고 또 비가 오고
+                        슬픈 음악이 흐르면
+                        옛 노래처럼 yeah
+                        네가 생각나
+                        네가 생각나
+                    </p>
+                    <p class="text-sm">2021-09-25 - 10개의 댓글</p>
+                    <ul class="list-unstyled d-flex justify-content-between mb-0">
+                        <li>작성자</li>
+                        <li class="text-right">❤(10)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-3 mb-4">
+            <div class="card card-h">
+                <a href="shop-single.html">
+                    <img src="../static/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+                </a>
+                <div class="card-body">
+                    <a href="shop-single.html" class="h2 text-decoration-none text-dark title">제목</a>
+                    <p class="card-text pt-3 content">
+                        비가 오고
+                        네가 생각나
+                        비가 오고 또 비가 오고
+                        슬픈 음악이 흐르면
+                        옛 노래처럼 yeah
+                        네가 생각나
+                        네가 생각나
+                    </p>
+                    <p class="text-sm">2021-09-25 - 10개의 댓글</p>
+                    <ul class="list-unstyled d-flex justify-content-between mb-0">
+                        <li>작성자</li>
+                        <li class="text-right">❤(10)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
     </div>
 </section>
 <!-- End Featured Product -->
@@ -415,10 +416,10 @@
 <script src="../static/js/templatemo.js" th:src="@{/js/templatemo.js}"></script>
 <script src="../static/js/custom.js" th:src="@{/js/custom.js}"></script>
 <script>
-const button = document.querySelector('#dropdownMenu2');
+const button = document.querySelector('#dropdownMenuLink');
 
 button.addEventListener('click', () => {
-const dropdown = document.querySelector('#drop-content');
+const dropdown = document.querySelector('#dropdown-menu');
     if(dropdown.style.display == 'block'){
         dropdown.style.display = '';
     }
@@ -427,10 +428,6 @@ const dropdown = document.querySelector('#drop-content');
     }
 });
 
-button.addEventListener('blur', () => {
-  const dropdown = document.querySelector('#drop-content');
-  dropdown.style.display = '';
-});
 
 
 </script>

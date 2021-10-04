@@ -41,8 +41,8 @@
 <script type="text/javascript" src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 <script src="https://uicdn.toast.com/editor-plugin-code-syntax-highlight/latest/toastui-editor-plugin-code-syntax-highlight-all.min.js"></script>
 <section class="container pt-2 pb-5">
+
     <form th:action="@{/community/write}" onsubmit="getMarkDown();" id="form" method="post" enctype="applicaion/json">
-<!--        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
         <input type="text" class="form-control my-3 py-3 h2" name="title" placeholder="제목을 입력해주세요!" aria-label="Username" aria-describedby="basic-addon1" style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;">
         <input type="text" id="tag" class="form-control my-3 px-auto py-2" placeholder="태그를 추가해주세요" aria-label="Username" aria-describedby="basic-addon1" style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;">
         <div id="tag_list" class="d-flex">
@@ -60,7 +60,6 @@
             <button type="button" class="btn btn-primary" onclick="document.getElementById('form').submit();">작성 끝</button>
         </div>
         <input type="hidden" id="context" name="context" value="">
-
 
     </form>
 </section>
