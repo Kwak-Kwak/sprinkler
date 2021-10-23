@@ -30,6 +30,10 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	implementation 'org.jsoup:jsoup:1.11.3'
+
+	// json
+	implementation group: 'org.json', name: 'json', version: '20160810'
+
 }
 
 test {
