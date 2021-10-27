@@ -17,7 +17,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Getter
-
 public class UserInfo implements UserDetails {
     @Id
     @Column(name = "code")
@@ -26,6 +25,7 @@ public class UserInfo implements UserDetails {
 
     @Column(name = "email", unique = true)
     private String email;
+
 
     @Column(name = "password")
     private String password;

@@ -1,13 +1,13 @@
 package com.sprinkler.kwakkwak.service;
 
 import com.sprinkler.kwakkwak.domain.*;
-import com.sprinkler.kwakkwak.dto.CreateCommentRequest;
-import com.sprinkler.kwakkwak.dto.CreatePostRequest;
+import com.sprinkler.kwakkwak.dto.*;
 import com.sprinkler.kwakkwak.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,25 +20,83 @@ public class BoardService {
     private final CommentRepository commentRepository;
     private final HeartRepository heartRepository;
     private final ScrapRepository scrapRepository;
+    private final ProfileRepository profileRepository;
 
     @Transactional
-    public List<Post> getAllPostList() {
-        List<Post> post = postRepository.findAll();
-        return post;
+    public List<PostDto> getAllPostList() {
+        List<Post> postList = postRepository.findAll();
+
+        return get(postList);
     }
 
 
     @Transactional
-    public List<Post> getPostList(Long boardId) {
-        List<Post> post = postRepository.findByBoardId(boardId);
-        return post;
+    public List<PostDto> getPostList(Long boardId) {
+        List<Post> postList = postRepository.findByBoardId(boardId);
+
+        return get(postList);
     }
 
     @Transactional
-    public Optional<Post> getPost(Long postId) {
-        Optional<Post> post = postRepository.findById(postId);
+    public List<PostDto> get(List<Post> postList) {
 
-        return post;
+        List<PostDto> postDtoList = new ArrayList<>();
+
+        for (Post post : postList) {
+            PostDto postDto = PostDto.builder()
+                    .commentNum(post.getCommentNum())
+                    .heartNum(post.getHeartNum())
+                    .context(post.getContext())
+                    .postId(post.getId())
+                    .title(post.getTitle())
+                    .userName(profileRepository.findByUserInfo_Code(post.getUserInfo().getCode()).get().getUserName())
+                    .createdAt(post.getCreatedAt().toLocalDate())
+                    .build();
+
+            postDtoList.add(postDto);
+        }
+
+        return postDtoList;
+    }
+
+    @Transactional
+    public PostDetailDto getPost(Long postId) {
+        Post post = postRepository.findById(postId).get();
+        Profile profile = profileRepository.findByUserInfo_Code(post.getUserInfo().getCode()).get();
+
+        PostDetailDto postDetailDto = PostDetailDto.builder()
+                .postCommentNum(post.getCommentNum())
+                .postContext(post.getContext())
+                .createdAt(post.getCreatedAt().toLocalDate())
+                .postTitle(post.getTitle())
+                .self(profile.getSelf())
+                .postId(post.getId())
+                .userName(profile.getUserName())
+                .build();
+
+        return postDetailDto;
+    }
+
+    @Transactional
+    public List<CommentDto> getComment(Long postId) {
+        List<Comment> commentList = commentRepository.findByPost_Id(postId);
+
+        List<CommentDto> commentDtoList = new ArrayList<>();
+
+        for (Comment comment : commentList) {
+            UserInfo userInfo = comment.getUserInfo();
+            Profile profile = profileRepository.findByUserInfo_Code(userInfo.getCode()).get();
+
+            CommentDto commentDto = CommentDto.builder()
+                    .content(comment.getContext())
+                    .createdAt(comment.getCreatedAt().toLocalDate())
+                    .userName(profile.getUserName()).build();
+
+            commentDtoList.add(commentDto);
+        }
+
+        return commentDtoList;
+
     }
 
     @Transactional
@@ -54,6 +112,8 @@ public class BoardService {
         postRepository.save(post);
     }
 
+
+
     @Transactional
     public void deletePost(Long postId,Long userId) {
         Optional<Post> post = postRepository.findById(postId);
@@ -66,12 +126,6 @@ public class BoardService {
         }
     }
 
-    @Transactional
-    public List<Comment> getComment(Long postId) {
-        List<Comment> comment = commentRepository.findByPost_Id(postId);
-
-        return comment;
-    }
 
     @Transactional
     public void saveComment(Long postId ,CreateCommentRequest request, UserInfo userInfo) {

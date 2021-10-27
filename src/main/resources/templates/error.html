@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>곽곽</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="../static/img/apple-icon.png">
+    <link rel="shortcut icon" type="/image/x-icon" href="../static/img/logo.png" th:href="@{/img/logo.png}">
+
+    <link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link href="../static/css/templatemo.css" th:href="@{/css/templatemo.css}" rel="stylesheet">
+    <link href="../static/css/custom.css" th:href="@{/css/custom.css}" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+</head>
+<body th:with="httpStatus=${T(org.springframework.http.HttpStatus).valueOf(#response.status)}">
+
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container d-flex justify-content-between align-items-center">
+
+        <a class="navbar-brand text-success logo h1 align-self-center" href="index.html" th:href="@{/}">
+            <img src="../static/img/logo.png" th:src="@{/img/logo.png}" style="height: 10vh;" alt="">곽곽
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
+             id="templatemo_main_nav">
+            <div class="flex-fill">
+                <ul class="nav navbar-nav d-flex justify-content-end ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="ranking.html" th:href="@{/ranking}">곽곽랭킹</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="community.html" th:href="@{/community}">커뮤니티</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="info.html" th:href="@{/seoultech}">곽곽 RSS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html" th:href="@{/login}">로그인</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="signup.html" th:href="@{/signup}">회원가입</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</nav>
+<!-- Close Header -->
+
+
+<div class="row" style="text-align: center">
+    <img src="../static/img/jandy_logo.png" th:src="@{/img/jandy_logo.png}" style="height: 500px; object-fit: contain">
+    <p>페이지를 찾을 수 없습니다!</p>
+    <a href="index.html" th:href="@{/index}">메인페이지로 이동</a>
+</div>
+
+
+
+</body>
+</html>

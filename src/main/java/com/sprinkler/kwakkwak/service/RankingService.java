@@ -1,97 +1,117 @@
 package com.sprinkler.kwakkwak.service;
 
+import com.sprinkler.kwakkwak.domain.Profile;
+import com.sprinkler.kwakkwak.domain.Ranking;
+import com.sprinkler.kwakkwak.dto.RankingDetailDto;
+import com.sprinkler.kwakkwak.dto.RankingDto;
+import com.sprinkler.kwakkwak.repository.ProfileRepository;
+import com.sprinkler.kwakkwak.repository.RankingRepository;
+import lombok.RequiredArgsConstructor;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
+@RequiredArgsConstructor
 @Service
 public class RankingService {
 
-    private final static Logger log = Logger.getGlobal();
-    private final static String baseURL="https://api.github.com";
+    private final RankingRepository rankingRepository;
+    private final ProfileRepository profileRepository;
 
-    @Scheduled(cron = "0 0 0/4 * * ?")
-    public void test() {
-        JSONArray ret = get("/users/kwonchanmi/events?per_page=100&page=1");
-        JSONArray ret2 = get("/users/kwonchanmi/events?per_page=100&page=2");
-        JSONArray ret3 = get("/users/kwonchanmi/events?per_page=100&page=3");
+    // 일주일 랭킹 전체 출력
+    @Transactional
+    public List<RankingDetailDto> weekRanking() {
+        List<Ranking> rankings = rankingRepository.findByOrderByWeekScoreDesc();
 
-        if (ret3.length() == 100) {
-            System.out.println(ret3.get(99));
-        }
-        System.out.println(ret.length());
-        System.out.println(ret2.length());
-        System.out.println(ret3.length());
-        JSONObject test = ret3.getJSONObject(ret3.length() - 1);
-        System.out.println(test.get("created_at"));
+        List<RankingDetailDto> rankingDtos = new ArrayList<>();
 
+        for (Ranking ranking : rankings) {
+            Profile profile = profileRepository.findByUserInfo_Code(ranking.getUserInfo().getCode()).get();
 
-    }
+            RankingDetailDto rankingDto = new RankingDetailDto();
 
-    public JSONArray get(String link) {
-        JSONArray ret = new JSONArray();
-        HttpURLConnection conn = null;
+            rankingDto.setUserName(profile.getUserName());
+            rankingDto.setScore(ranking.getWeekScore());
+            rankingDto.setCommit(ranking.getWeekCommit());
 
-        try {
-            URL url = new URL(baseURL + link);
-
-            conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-            conn.setRequestProperty("Content-Type", "application/json");
-            conn.setDoOutput(true);
-
-            ret = readJson(conn);
-        } catch (IOException e) {
-            e.printStackTrace();
+            rankingDtos.add(rankingDto);
         }
 
-        return ret;
+        return rankingDtos;
     }
 
+    // 90일 랭킹 전체 출력
+    @Transactional
+    public List<RankingDetailDto> monthRanking() {
+        List<Ranking> rankings = rankingRepository.findByOrderByMonthScoreDesc();
 
-    public static JSONArray readJson(HttpURLConnection conn) {
+        List<RankingDetailDto> rankingDtos = new ArrayList<>();
 
-        JSONArray ret = new JSONArray();
+        for (Ranking ranking : rankings) {
+            Profile profile = profileRepository.findByUserInfo_Code(ranking.getUserInfo().getCode()).get();
 
-        try {
-            int responseCode = conn.getResponseCode();
+            RankingDetailDto rankingDto = new RankingDetailDto();
 
-            if (responseCode == 400) {
-                log.warning("BAD REQUEST");
-            } else if (responseCode == 401) {
-                log.warning("UNAUTHORIZED");
-            } else if (responseCode == 500) {
-                log.warning("SERVER ERROR");
-            } else if (responseCode == 200) {
-                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            rankingDto.setUserName(profile.getUserName());
+            rankingDto.setScore(ranking.getMonthScore());
+            rankingDto.setCommit(ranking.getMonthCommit());
 
-                StringBuilder sb = new StringBuilder();
-
-                String line = "";
-
-                while ((line = br.readLine()) != null) {
-                    sb.append(line);
-                }
-
-                String temp = sb.toString();
-
-
-                ret = new JSONArray(temp);
-
-            } else {
-                log.warning("ERROR");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+            rankingDtos.add(rankingDto);
         }
 
-        return ret;
+        return rankingDtos;
     }
+
+    // 90일 탑 랭킹 출력
+    @Transactional
+    public List<RankingDto> monthTopRanking() {
+        List<Ranking> rankings = rankingRepository.findTop5ByOrderByMonthScoreDesc();
+
+        List<RankingDto> rankingDtos = new ArrayList<>();
+
+        for (Ranking ranking : rankings) {
+            Profile profile = profileRepository.findByUserInfo_Code(ranking.getUserInfo().getCode()).get();
+
+            RankingDto rankingDto = new RankingDto();
+
+            rankingDto.setUserName(profile.getUserName());
+            rankingDto.setScore(ranking.getMonthScore());
+
+            rankingDtos.add(rankingDto);
+        }
+
+        return rankingDtos;
+    }
+
+    // 일주일 탑 랭킹 출력
+    @Transactional
+    public List<RankingDto> weekTopRanking() {
+        List<Ranking> rankings = rankingRepository.findTop5ByOrderByWeekScoreDesc();
+
+        List<RankingDto> rankingDtos = new ArrayList<>();
+
+        for (Ranking ranking : rankings) {
+            Profile profile = profileRepository.findByUserInfo_Code(ranking.getUserInfo().getCode()).get();
+
+            RankingDto rankingDto = new RankingDto();
+
+            rankingDto.setUserName(profile.getUserName());
+            rankingDto.setScore(ranking.getWeekScore());
+
+            rankingDtos.add(rankingDto);
+        }
+
+        return rankingDtos;
+    }
+
 }

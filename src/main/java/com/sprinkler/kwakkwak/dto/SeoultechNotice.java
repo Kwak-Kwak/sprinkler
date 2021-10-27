@@ -19,4 +19,6 @@ public class SeoultechNotice {
     private String postDate; // 게시글 작성 날짜
 
     private int postViewNumber; // 게시글 조회수
+
+    private String postUrl; // 게시글 URL
 }

@@ -1,10 +1,12 @@
 package com.sprinkler.kwakkwak.domain;
 
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Getter
 @NoArgsConstructor
 @Entity
 public class Ranking {
@@ -17,20 +19,27 @@ public class Ranking {
     @JoinColumn(name="user_info_code")
     private UserInfo userInfo;
 
-    private Long month_score;
+    private Long monthScore;
 
-    private Long month_commit;
+    private Long monthCommit;
 
-    private Long week_score;
+    private Long weekScore;
 
-    private Long week_commit;
+    private Long weekCommit;
 
     @Builder
-    public Ranking(UserInfo userInfo, Long month_score, Long week_score, Long month_commit, Long week_commit) {
+    public Ranking(UserInfo userInfo, Long monthScore, Long weekScore, Long monthCommit, Long weekCommit) {
         this.userInfo = userInfo;
-        this.month_score = month_score;
-        this.week_score = week_score;
-        this.month_commit = month_commit;
-        this.week_commit = week_commit;
+        this.monthScore = monthScore;
+        this.weekScore = weekScore;
+        this.monthCommit = monthCommit;
+        this.weekCommit = weekCommit;
+    }
+
+    public void update(Long monthScore, Long weekScore, Long monthCommit, Long weekCommit){
+        this.monthCommit = monthCommit;
+        this.weekCommit = weekCommit;
+        this.monthScore = monthScore;
+        this.weekScore = weekScore;
     }
 }

@@ -6,23 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="../static/img/apple-icon.png">
-    <link rel="shortcut icon" type="/image/x-icon" href="../static/img/favicon.ico">
+    <link rel="shortcut icon" type="/image/x-icon" href="../static/img/logo.png" th:href="@{/img/logo.png}">
 
     <link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
     <link href="../static/css/templatemo.css" th:href="@{/css/templatemo.css}" rel="stylesheet">
     <link href="../static/css/custom.css" th:href="@{/css/custom.css}" rel="stylesheet">
 
-    <!-- Load fonts style after rendering the layout styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link href="../static/css/fontawesome.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
 
-    <!--
 
-    TemplateMo 559 Zay Shop
-
-    https://templatemo.com/tm-559-zay-shop
-
-    -->
 </head>
 
 <body>
@@ -31,31 +25,34 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container d-flex justify-content-between align-items-center">
 
-        <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-            <img src="../static/img/glass_sit.png"  style="height: 10vh;" alt="">곽곽
+        <a class="navbar-brand text-success logo h1 align-self-center" href="index.html" th:href="@{/}">
+            <img src="../static/img/logo.png" th:src="@{/img/logo.png}" style="height: 10vh;" alt="">곽곽
         </a>
 
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+        <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
+             id="templatemo_main_nav">
             <div class="flex-fill">
                 <ul class="nav navbar-nav d-flex justify-content-end ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="ranking.html">곽곽랭킹</a>
+                        <a class="nav-link" href="ranking.html" th:href="@{/ranking}">곽곽랭킹</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="community.html" th:href="@{/community}">커뮤니티</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="info.html">곽곽 RSS</a>
+                        <a class="nav-link" href="info.html" th:href="@{/seoultech}">곽곽 RSS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="login.html">로그인</a>
+                        <a class="nav-link" href="login.html" th:href="@{/login}">로그인</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="signup.html">회원가입</a>
+                        <a class="nav-link" href="signup.html" th:href="@{/signup}">회원가입</a>
                     </li>
                 </ul>
             </div>
@@ -73,11 +70,61 @@
             </p>
         </div>
     </div>
-    <img src="/static/img/banner1.png" class="banner" alt="">
 </section>
 
 
-
+<!-- Start Banner Hero -->
+<div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
+        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" style="height : 600px">
+        <div class="carousel-item active">
+            <div class="container">
+                <div class="row p-5">
+                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                        <a href="https://woowacourse.github.io/" target="_blank">
+                            <img class="img-fluid" src="../static/img/banner_img_01.jpg" th:src="@{/img/banner_img_01.jpg}" alt="" style="position: absolute; top:0; left: 0; height:100%; width:100%; object-fit: contain; margin-top:30px">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="container">
+                <div class="row p-5">
+                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                        <a href="https://www.ssafy.com/ksp/jsp/swp/swpMain.jsp" target="_blank">
+                            <img class="img-fluid" src="../static/img/ssafy.png" th:src="@{/img/ssafy.png}" alt="" style="position: absolute; top:0; left: 0; height:100%; width:100%; object-fit: contain; margin-top:30px">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="container">
+                <div class="row p-5">
+                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                        <a href="https://www.wanted.co.kr/events/audition2021_register" target="_blank">
+                            <img class="img-fluid" src="../static/img/hack.jpg" th:src="@{/img/hack.jpg}" alt="" style="position: absolute; top:0; left: 0; height:100%; width:100%; object-fit: contain; margin-top:30px">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel"
+       role="button" data-bs-slide="prev">
+        <i class="fas fa-chevron-left"></i>
+    </a>
+    <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel"
+       role="button" data-bs-slide="next">
+        <i class="fas fa-chevron-right"></i>
+    </a>
+</div>
+<!-- End Banner Hero -->
 
 
 <!-- Start Footer -->
@@ -106,10 +153,10 @@
             <div class="col-md-4 pt-5">
                 <h2 class="h2 text-light border-bottom pb-3 border-light">사이트</h2>
                 <ul class="list-unstyled text-light footer-link-list">
-                    <li><a class="text-decoration-none" href="#">곽곽랭킹</a></li>
-                    <li><a class="text-decoration-none" href="#">곽곽커뮤니티</a></li>
-                    <li><a class="text-decoration-none" href="#">곽곽RSS</a></li>
-                    <li><a class="text-decoration-none" href="#">마이페이지</a></li>
+                    <li><a class="text-decoration-none" href="ranking.html" th:href="@{/ranking}">곽곽랭킹</a></li>
+                    <li><a class="text-decoration-none" href="community.html" th:href="@{/community}">커뮤니티</a></li>
+                    <li><a class="text-decoration-none" href="seoultech.html" th:href="@{/seoultech}">곽곽 RSS</a></li>
+                    <li><a class="text-decoration-none" href="mypage.html" th:href="@{/mypage}">마이페이지</a></li>
                 </ul>
             </div>
 
@@ -123,16 +170,20 @@
             <div class="col-auto me-auto">
                 <ul class="list-inline text-left footer-icons">
                     <li class="list-inline-item border border-light rounded-circle text-center">
-                        <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+                        <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i
+                                class="fab fa-facebook-f fa-lg fa-fw"></i></a>
                     </li>
                     <li class="list-inline-item border border-light rounded-circle text-center">
-                        <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
+                        <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i
+                                class="fab fa-instagram fa-lg fa-fw"></i></a>
                     </li>
                     <li class="list-inline-item border border-light rounded-circle text-center">
-                        <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
+                        <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i
+                                class="fab fa-twitter fa-lg fa-fw"></i></a>
                     </li>
                     <li class="list-inline-item border border-light rounded-circle text-center">
-                        <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
+                        <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i
+                                class="fab fa-linkedin fa-lg fa-fw"></i></a>
                     </li>
                 </ul>
             </div>
@@ -145,7 +196,7 @@
                 <div class="col-12">
                     <p class="text-left text-light">
                         Copyright &copy; 2021 곽곽
-                        | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">곽곽</a>
+                        | Designed by <a rel="sponsored" href="https://github.com/Kwak-Kwak" target="_blank">곽곽</a>
                     </p>
                 </div>
             </div>

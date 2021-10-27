@@ -34,6 +34,9 @@ dependencies {
 	// json
 	implementation group: 'org.json', name: 'json', version: '20160810'
 
+	//validation
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
 }
 
 test {
