@@ -20,14 +20,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception { // http 관련 인증 설정
-//
-//        http
-//                .authorizeRequests()
-//                .antMatchers("/**").permitAll().anyRequest().permitAll();
-//
-//        http
-//                .csrf().disable();
-//
 
         http
                 .authorizeRequests() // 접근 인증 설정

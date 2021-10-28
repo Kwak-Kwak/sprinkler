@@ -1,6 +1,7 @@
 /*
 Custom Css
 */
+input[type=password] {font-family:'Malgun gothic', dotum, sans-serif;}
 
 @font-face {
 font-family: 'BMHANNAPro';
@@ -82,12 +83,16 @@ font-style: normal;
     overflow: hidden;
 }
 
-@media (width <720){
- .card-img-top {
- height : 60vh;
- }
-}
+/*@media (width < 720){*/
+/* .card-img-top {*/
+/* height : 60vh;*/
+/* }*/
+/*}*/
 
 .login_profile {
     width:20vw;
+}
+
+.active {
+    color: red;
 }

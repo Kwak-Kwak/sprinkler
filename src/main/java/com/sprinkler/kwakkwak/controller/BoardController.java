@@ -4,8 +4,7 @@ package com.sprinkler.kwakkwak.controller;
 import com.sprinkler.kwakkwak.domain.Comment;
 import com.sprinkler.kwakkwak.domain.Post;
 import com.sprinkler.kwakkwak.domain.UserInfo;
-import com.sprinkler.kwakkwak.dto.CreateCommentRequest;
-import com.sprinkler.kwakkwak.dto.CreatePostRequest;
+import com.sprinkler.kwakkwak.dto.*;
 import com.sprinkler.kwakkwak.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -23,49 +22,55 @@ public class BoardController {
 
     private final BoardService boardService;
 
+    // 전체 커뮤니티
     @GetMapping("/community")
     public String getBoard(Model model) {
-        List<Post> postList = boardService.getAllPostList();
+        List<PostDto> postList = boardService.getAllPostList();
         model.addAttribute("postList", postList);
         return "community";
     }
 
-
+    // 스터디 게시판
     @GetMapping("/community/study")
     public String getStudyBoard(Model model) {
-        List<Post> postList = boardService.getPostList(1L);
+        List<PostDto> postList = boardService.getPostList(1L);
         model.addAttribute("postList", postList);
         return "community";
     }
 
+    // 질의응답 게시판
     @GetMapping("/community/question")
     public String getQuestionBoard(Model model) {
-        List<Post> postList = boardService.getPostList(2L);
+        List<PostDto> postList = boardService.getPostList(2L);
         model.addAttribute("postList", postList);
         return "community";
     }
 
+    // 자유 게시판
     @GetMapping("/community/free")
     public String getFreeBoard(Model model) {
-        List<Post> postList = boardService.getPostList(3L);
+        List<PostDto> postList = boardService.getPostList(3L);
         model.addAttribute("postList", postList);
         return "community";
     }
 
+    // 특정 게시물 확인
     @GetMapping("/community/{postId}")
-    public String getStudyPost(@PathVariable String postId, Model model) {
-        Long id = Long.parseLong(postId);
-        Optional<Post> post = boardService.getPost(id);
-        List<Comment> comment = boardService.getComment(id);
-        model.addAttribute("post", post.get());
+    public String getPost(@PathVariable Long postId, Model model) {
+        PostDetailDto postDetailDto = boardService.getPost(postId);
+        List<CommentDto> comment = boardService.getComment(postId);
+        model.addAttribute("post", postDetailDto);
         model.addAttribute("commentList", comment);
         return "view";
     }
 
 
     @GetMapping("/community/write")
-    public String write() {
-        System.out.println("write");
+    public String write(@AuthenticationPrincipal UserInfo userInfo) {
+
+        if(userInfo==null)
+            return "login";
+
         return "write";
     }
 
@@ -75,10 +80,13 @@ public class BoardController {
         return new RedirectView("/community");
     }
 
-    @PostMapping("/community/{postId}")
-    public RedirectView saveComment(@PathVariable String postId, CreateCommentRequest request, @AuthenticationPrincipal UserInfo userInfo) {
-        Long id = Long.parseLong(postId);
-        boardService.saveComment(id,request,userInfo);
+    @PostMapping("/community/comment/{postId}")
+    public RedirectView saveComment(@PathVariable Long postId, CreateCommentRequest request, @AuthenticationPrincipal UserInfo userInfo) {
+
+        if(userInfo==null)
+            return new RedirectView("/login");
+
+        boardService.saveComment(postId,request,userInfo);
         return new RedirectView("/community/{postId}");
     }
 

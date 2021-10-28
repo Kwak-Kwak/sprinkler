@@ -4,11 +4,8 @@ package com.sprinkler.kwakkwak.domain;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,7 +17,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Getter
-
 public class UserInfo implements UserDetails {
     @Id
     @Column(name = "code")
@@ -30,8 +26,10 @@ public class UserInfo implements UserDetails {
     @Column(name = "email", unique = true)
     private String email;
 
+
     @Column(name = "password")
     private String password;
+
 
 
     @Builder
