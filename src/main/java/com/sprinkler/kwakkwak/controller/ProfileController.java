@@ -38,12 +38,12 @@ public class ProfileController {
                 model.addAttribute(key, validatorResult.get(key));
             }
 
-            return "/profile";
+            return "profile";
         }
 
         profileService.saveProfile(profileDto);
 
-        return "/login";
+        return "login";
     }
 
 }

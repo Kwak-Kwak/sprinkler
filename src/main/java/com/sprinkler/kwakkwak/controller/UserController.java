@@ -40,7 +40,7 @@ public class UserController {
                 model.addAttribute(key, validatorResult.get(key));
             }
 
-            return "/signup";
+            return "signup";
 
 
         }
@@ -53,7 +53,7 @@ public class UserController {
 
         model.addAttribute("userCode", code);
 
-        return "/profile";
+        return "profile";
     }
 
     // 회원 등록 화면으로 이동
