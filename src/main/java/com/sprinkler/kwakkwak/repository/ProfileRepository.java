@@ -15,4 +15,5 @@ public interface ProfileRepository extends JpaRepository<Profile, Long> {
 
     // username이 있는지 확인
     boolean existsByUserName(String userName);
+
 }

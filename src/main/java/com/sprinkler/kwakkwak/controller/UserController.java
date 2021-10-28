@@ -30,19 +30,21 @@ public class UserController {
     @PostMapping("/user")
     public String signup(@Valid UserInfoDto infoDto, BindingResult errors, Model model) {
 
-        // 에러 발생 시
-        if (errors.hasErrors()) {
+        Map<String, String> validatorResult = userService.validateHandling(errors, infoDto.getEmail());
+
+        if (!validatorResult.isEmpty()) {
 
             model.addAttribute("infoDto", infoDto);
 
-
-            Map<String, String> validatorResult = userService.validateHandling(errors, infoDto.getEmail());
             for (String key : validatorResult.keySet()) {
                 model.addAttribute(key, validatorResult.get(key));
             }
 
             return "/signup";
+
+
         }
+
 
         // 회원 추가 -> 프로필 페이지로 이동
         Long code=userService.save(infoDto);
@@ -51,7 +53,7 @@ public class UserController {
 
         model.addAttribute("userCode", code);
 
-        return "profile";
+        return "/profile";
     }
 
     // 회원 등록 화면으로 이동
